@@ -5,7 +5,6 @@
 #define DEBUG(...)                              \
     do {                                        \
         fprintf(stderr, "DEBUG: " __VA_ARGS__); \
-        fflush(stderr);                         \
     } while (0)
 #else
 #define DEBUG(...)
@@ -15,7 +14,6 @@
 #define INFO(stream, ...)                       \
     do {                                        \
         fprintf(stream, "INFO: " __VA_ARGS__);  \
-        fflush(stream);                         \
     } while (0)
 #else
 #define INFO(stream, ...)
