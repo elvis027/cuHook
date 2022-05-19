@@ -9,7 +9,6 @@
 #include "cuda_hook.h"
 #include "debug.h"
 
-#define _CUDA_HOOK_ENABLE
 #ifdef _CUDA_HOOK_ENABLE
 
 static struct cudaHookInfo cuda_hook_info;

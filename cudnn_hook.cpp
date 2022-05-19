@@ -10,7 +10,6 @@
 #include "cudnn_hook.h"
 #include "debug.h"
 
-#define _CUDNN_HOOK_ENABLE
 #ifdef _CUDNN_HOOK_ENABLE
 
 static struct cudnnHookInfo cudnn_hook_info;
