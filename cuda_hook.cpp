@@ -11,6 +11,8 @@
 
 #ifdef _CUDA_HOOK_ENABLE
 
+typedef unsigned long long ull;
+
 static struct cudaHookInfo cuda_hook_info;
 static pthread_once_t cuda_hook_init_done = PTHREAD_ONCE_INIT;
 
@@ -318,6 +320,9 @@ CUresult cuArray3DCreate_posthook(
     const CUDA_ARRAY3D_DESCRIPTOR *pAllocateArray
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuArray3DCreate %llu %llu\n",
+        (ull)*pHandle,
+        (ull)pAllocateArray);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -345,6 +350,9 @@ CUresult cuArrayCreate_posthook(
     const CUDA_ARRAY_DESCRIPTOR *pAllocateArray
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuArrayCreate %llu %llu\n",
+        (ull)*pHandle,
+        (ull)pAllocateArray);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -369,6 +377,8 @@ CUresult cuArrayDestroy_posthook(
     CUarray hArray
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuArrayDestroy %llu\n",
+        (ull)hArray);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -396,6 +406,9 @@ CUresult cuMemAlloc_posthook(
     size_t bytesize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemAlloc %llu %lu\n",
+        (ull)*dptr,
+        bytesize);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -423,6 +436,9 @@ CUresult cuMemAllocHost_posthook(
     size_t bytesize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemAllocHost %llu %lu\n",
+        (ull)*pp,
+        bytesize);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -453,6 +469,10 @@ CUresult cuMemAllocManaged_posthook(
     unsigned int flags
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemAllocManaged %llu %lu %u\n",
+        (ull)*dptr,
+        bytesize,
+        flags);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -489,6 +509,12 @@ CUresult cuMemAllocPitch_posthook(
     unsigned int ElementSizeBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemAllocPitch %llu %lu %lu %lu %u\n",
+        (ull)*dptr,
+        *pPitch,
+        WidthInBytes,
+        Height,
+        ElementSizeBytes);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -513,6 +539,8 @@ CUresult cuMemFree_posthook(
     CUdeviceptr dptr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemFree %llu\n",
+        (ull)dptr);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -537,6 +565,8 @@ CUresult cuMemFreeHost_posthook(
     void *p
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemFreeHost %llu\n",
+        (ull)p);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -567,6 +597,10 @@ CUresult cuMemHostAlloc_posthook(
     unsigned int Flags
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemHostAlloc %llu %lu %u\n",
+        (ull)*pp,
+        bytesize,
+        Flags);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -597,6 +631,10 @@ CUresult cuMemcpy_posthook(
     size_t ByteCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpy %llu %llu %lu\n",
+        (ull)dst,
+        (ull)src,
+        ByteCount);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -621,6 +659,8 @@ CUresult cuMemcpy2D_posthook(
     const CUDA_MEMCPY2D *pCopy
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpy2D %llu\n",
+        (ull)pCopy);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -648,6 +688,9 @@ CUresult cuMemcpy2DAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpy2DAsync %llu %llu\n",
+        (ull)pCopy,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -672,6 +715,8 @@ CUresult cuMemcpy2DUnaligned_posthook(
     const CUDA_MEMCPY2D *pCopy
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpy2DUnaligned %llu\n",
+        (ull)pCopy);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -696,6 +741,8 @@ CUresult cuMemcpy3D_posthook(
     const CUDA_MEMCPY3D *pCopy
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpy3D %llu\n",
+        (ull)pCopy);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -723,6 +770,9 @@ CUresult cuMemcpy3DAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpy3DAsync %llu %llu\n",
+        (ull)pCopy,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -747,6 +797,8 @@ CUresult cuMemcpy3DPeer_posthook(
     const CUDA_MEMCPY3D_PEER *pCopy
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpy3DPeer %llu\n",
+        (ull)pCopy);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -774,6 +826,9 @@ CUresult cuMemcpy3DPeerAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpy3DPeerAsync %llu %llu\n",
+        (ull)pCopy,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -807,6 +862,11 @@ CUresult cuMemcpyAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyAsync %llu %llu %lu %llu\n",
+        (ull)dst,
+        (ull)src,
+        ByteCount,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -843,6 +903,12 @@ CUresult cuMemcpyAtoA_posthook(
     size_t ByteCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyAtoA %llu %lu %llu %lu %lu\n",
+        (ull)dstArray,
+        dstOffset,
+        (ull)srcArray,
+        srcOffset,
+        ByteCount);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -876,6 +942,11 @@ CUresult cuMemcpyAtoD_posthook(
     size_t ByteCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyAtoD %llu %llu %lu %lu\n",
+        (ull)dstDevice,
+        (ull)srcArray,
+        srcOffset,
+        ByteCount);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -909,6 +980,11 @@ CUresult cuMemcpyAtoH_posthook(
     size_t ByteCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyAtoH %llu %llu %lu %lu\n",
+        (ull)dstHost,
+        (ull)srcArray,
+        srcOffset,
+        ByteCount);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -945,6 +1021,12 @@ CUresult cuMemcpyAtoHAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyAtoHAsync %llu %llu %lu %lu %llu\n",
+        (ull)dstHost,
+        (ull)srcArray,
+        srcOffset,
+        ByteCount,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -978,6 +1060,11 @@ CUresult cuMemcpyDtoA_posthook(
     size_t ByteCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyDtoA %llu %lu %llu %lu\n",
+        (ull)dstArray,
+        dstOffset,
+        (ull)srcDevice,
+        ByteCount);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1008,6 +1095,10 @@ CUresult cuMemcpyDtoD_posthook(
     size_t ByteCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyDtoD %llu %llu %lu\n",
+        (ull)dstDevice,
+        (ull)srcDevice,
+        ByteCount);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1041,6 +1132,11 @@ CUresult cuMemcpyDtoDAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyDtoDAsync %llu %llu %lu %llu\n",
+        (ull)dstDevice,
+        (ull)srcDevice,
+        ByteCount,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1071,6 +1167,10 @@ CUresult cuMemcpyDtoH_posthook(
     size_t ByteCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyDtoH %llu %llu %lu\n",
+        (ull)dstHost,
+        (ull)srcDevice,
+        ByteCount);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1104,6 +1204,11 @@ CUresult cuMemcpyDtoHAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyDtoHAsync %llu %llu %lu %llu\n",
+        (ull)dstHost,
+        (ull)srcDevice,
+        ByteCount,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1137,6 +1242,11 @@ CUresult cuMemcpyHtoA_posthook(
     size_t ByteCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyHtoA %llu %lu %llu %lu\n",
+        (ull)dstArray,
+        dstOffset,
+        (ull)srcHost,
+        ByteCount);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1173,6 +1283,12 @@ CUresult cuMemcpyHtoAAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyHtoAAsync %llu %lu %llu %lu %llu\n",
+        (ull)dstArray,
+        dstOffset,
+        (ull)srcHost,
+        ByteCount,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1203,6 +1319,10 @@ CUresult cuMemcpyHtoD_posthook(
     size_t ByteCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyHtoD %llu %llu %lu\n",
+        (ull)dstDevice,
+        (ull)srcHost,
+        ByteCount);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1236,6 +1356,11 @@ CUresult cuMemcpyHtoDAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyHtoDAsync %llu %llu %lu %llu\n",
+        (ull)dstDevice,
+        (ull)srcHost,
+        ByteCount,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1272,6 +1397,12 @@ CUresult cuMemcpyPeer_posthook(
     size_t ByteCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyPeer %llu %llu %llu %llu %lu\n",
+        (ull)dstDevice,
+        (ull)dstContext,
+        (ull)srcDevice,
+        (ull)srcContext,
+        ByteCount);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1311,6 +1442,13 @@ CUresult cuMemcpyPeerAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemcpyPeerAsync %llu %llu %llu %llu %lu %llu\n",
+        (ull)dstDevice,
+        (ull)dstContext,
+        (ull)srcDevice,
+        (ull)srcContext,
+        ByteCount,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1341,6 +1479,10 @@ CUresult cuMemsetD16_posthook(
     size_t N
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD16 %llu %hu %lu\n",
+        (ull)dstDevice,
+        us,
+        N);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1374,6 +1516,11 @@ CUresult cuMemsetD16Async_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD16Async %llu %hu %lu %llu\n",
+        (ull)dstDevice,
+        us,
+        N,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1410,6 +1557,12 @@ CUresult cuMemsetD2D16_posthook(
     size_t Height
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD2D16 %llu %lu %hu %lu %lu\n",
+        (ull)dstDevice,
+        dstPitch,
+        us,
+        Width,
+        Height);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1449,6 +1602,13 @@ CUresult cuMemsetD2D16Async_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD2D16Async %llu %lu %hu %lu %lu %llu\n",
+        (ull)dstDevice,
+        dstPitch,
+        us,
+        Width,
+        Height,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1485,6 +1645,12 @@ CUresult cuMemsetD2D32_posthook(
     size_t Height
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD2D32 %llu %lu %u %lu %lu\n",
+        (ull)dstDevice,
+        dstPitch,
+        ui,
+        Width,
+        Height);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1524,6 +1690,13 @@ CUresult cuMemsetD2D32Async_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD2D32Async %llu %lu %u %lu %lu %llu\n",
+        (ull)dstDevice,
+        dstPitch,
+        ui,
+        Width,
+        Height,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1560,6 +1733,12 @@ CUresult cuMemsetD2D8_posthook(
     size_t Height
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD2D8 %llu %lu %u %lu %lu\n",
+        (ull)dstDevice,
+        dstPitch,
+        uc,
+        Width,
+        Height);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1599,6 +1778,13 @@ CUresult cuMemsetD2D8Async_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD2D8Async %llu %lu %u %lu %lu %llu\n",
+        (ull)dstDevice,
+        dstPitch,
+        uc,
+        Width,
+        Height,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1629,6 +1815,10 @@ CUresult cuMemsetD32_posthook(
     size_t N
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD32 %llu %u %lu\n",
+        (ull)dstDevice,
+        ui,
+        N);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1662,6 +1852,11 @@ CUresult cuMemsetD32Async_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD32Async %llu %u %lu %llu\n",
+        (ull)dstDevice,
+        ui,
+        N,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1692,6 +1887,10 @@ CUresult cuMemsetD8_posthook(
     size_t N
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD8 %llu %u %lu\n",
+        (ull)dstDevice,
+        uc,
+        N);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1725,6 +1924,11 @@ CUresult cuMemsetD8Async_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemsetD8Async %llu %u %lu %llu\n",
+        (ull)dstDevice,
+        uc,
+        N,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1755,6 +1959,10 @@ CUresult cuMipmappedArrayCreate_posthook(
     unsigned int numMipmapLevels
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMipmappedArrayCreate %llu %llu %u\n",
+        (ull)*pHandle,
+        (ull)pMipmappedArrayDesc,
+        numMipmapLevels);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1779,6 +1987,8 @@ CUresult cuMipmappedArrayDestroy_posthook(
     CUmipmappedArray hMipmappedArray
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMipmappedArrayDestroy %llu\n",
+        (ull)hMipmappedArray);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1806,6 +2016,9 @@ CUresult cuMemAddressFree_posthook(
     size_t size
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemAddressFree %llu %lu\n",
+        (ull)ptr,
+        size);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1842,6 +2055,12 @@ CUresult cuMemAddressReserve_posthook(
     unsigned long long flags
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemAddressReserve %llu %lu %lu %llu %llu\n",
+        (ull)*ptr,
+        size,
+        alignment,
+        (ull)addr,
+        flags);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1875,6 +2094,11 @@ CUresult cuMemCreate_posthook(
     unsigned long long flags
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemCreate %llu %lu %llu %llu\n",
+        (ull)*handle,
+        size,
+        (ull)prop,
+        flags);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1899,6 +2123,8 @@ CUresult cuMemRelease_posthook(
     CUmemGenericAllocationHandle handle
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemRelease %llu\n",
+        (ull)handle);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1929,6 +2155,10 @@ CUresult cuMemAllocAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemAllocAsync %llu %lu %llu\n",
+        (ull)*dptr,
+        bytesize,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1962,6 +2192,11 @@ CUresult cuMemAllocFromPoolAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemAllocFromPoolAsync %llu %lu %llu %llu\n",
+        (ull)*dptr,
+        bytesize,
+        (ull)pool,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1989,6 +2224,9 @@ CUresult cuMemFreeAsync_posthook(
     CUstream hStream
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemFreeAsync %llu %llu\n",
+        (ull)dptr,
+        (ull)hStream);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -2016,6 +2254,9 @@ CUresult cuMemPoolCreate_posthook(
     const CUmemPoolProps *poolProps
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemPoolCreate %llu %llu\n",
+        (ull)*pool,
+        (ull)poolProps);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -2040,6 +2281,8 @@ CUresult cuMemPoolDestroy_posthook(
     CUmemoryPool pool
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuMemPoolDestroy %llu\n",
+        (ull)pool);
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -2091,6 +2334,7 @@ CUresult cuLaunchCooperativeKernel_posthook(
     void **kernelParams
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuLaunchCooperativeKernel\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -2121,6 +2365,7 @@ CUresult cuLaunchHostFunc_posthook(
     void *userData
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuLaunchHostFunc\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -2175,6 +2420,7 @@ CUresult cuLaunchKernel_posthook(
     void **extra
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuLaunchKernel\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
