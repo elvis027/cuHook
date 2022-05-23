@@ -20,6 +20,7 @@ cudnnStatus_t cudnnCreate_prehook(
     cudnnHandle_t *handle
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreate_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -36,6 +37,7 @@ cudnnStatus_t cudnnCreate_posthook(
     cudnnHandle_t *handle
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreate_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -44,6 +46,7 @@ cudnnStatus_t cudnnDestroy_prehook(
     cudnnHandle_t handle
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroy_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -60,6 +63,7 @@ cudnnStatus_t cudnnDestroy_posthook(
     cudnnHandle_t handle
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroy_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -71,6 +75,7 @@ cudnnStatus_t cudnnQueryRuntimeError_prehook(
     cudnnRuntimeTag_t *tag
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnQueryRuntimeError_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -93,6 +98,7 @@ cudnnStatus_t cudnnQueryRuntimeError_posthook(
     cudnnRuntimeTag_t *tag
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnQueryRuntimeError_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -102,6 +108,7 @@ cudnnStatus_t cudnnSetStream_prehook(
     cudaStream_t streamId
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetStream_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -120,6 +127,7 @@ cudnnStatus_t cudnnSetStream_posthook(
     cudaStream_t streamId
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetStream_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -129,6 +137,7 @@ cudnnStatus_t cudnnGetStream_prehook(
     cudaStream_t *streamId
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetStream_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -147,6 +156,7 @@ cudnnStatus_t cudnnGetStream_posthook(
     cudaStream_t *streamId
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetStream_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -161,6 +171,7 @@ cudnnStatus_t cudnnTransformTensor_prehook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnTransformTensor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -189,6 +200,7 @@ cudnnStatus_t cudnnTransformTensor_posthook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnTransformTensor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -204,6 +216,7 @@ cudnnStatus_t cudnnTransformTensorEx_prehook(
     void *destData
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnTransformTensorEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -234,6 +247,7 @@ cudnnStatus_t cudnnTransformTensorEx_posthook(
     void *destData
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnTransformTensorEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -248,6 +262,7 @@ cudnnStatus_t cudnnAddTensor_prehook(
     void *C
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnAddTensor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -276,6 +291,7 @@ cudnnStatus_t cudnnAddTensor_posthook(
     void *C
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnAddTensor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -294,6 +310,7 @@ cudnnStatus_t cudnnOpTensor_prehook(
     void *C
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnOpTensor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -330,6 +347,7 @@ cudnnStatus_t cudnnOpTensor_posthook(
     void *C
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnOpTensor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -342,6 +360,7 @@ cudnnStatus_t cudnnGetReductionIndicesSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetReductionIndicesSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -366,6 +385,7 @@ cudnnStatus_t cudnnGetReductionIndicesSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetReductionIndicesSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -378,6 +398,7 @@ cudnnStatus_t cudnnGetReductionWorkspaceSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetReductionWorkspaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -402,6 +423,7 @@ cudnnStatus_t cudnnGetReductionWorkspaceSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetReductionWorkspaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -421,6 +443,7 @@ cudnnStatus_t cudnnReduceTensor_prehook(
     void *C
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnReduceTensor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -459,6 +482,7 @@ cudnnStatus_t cudnnReduceTensor_posthook(
     void *C
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnReduceTensor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -470,6 +494,7 @@ cudnnStatus_t cudnnSetTensor_prehook(
     const void *valuePtr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -492,6 +517,7 @@ cudnnStatus_t cudnnSetTensor_posthook(
     const void *valuePtr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -503,6 +529,7 @@ cudnnStatus_t cudnnScaleTensor_prehook(
     const void *alpha
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnScaleTensor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -525,6 +552,7 @@ cudnnStatus_t cudnnScaleTensor_posthook(
     const void *alpha
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnScaleTensor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -540,6 +568,7 @@ cudnnStatus_t cudnnTransformFilter_prehook(
     void *destData
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnTransformFilter_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -570,6 +599,7 @@ cudnnStatus_t cudnnTransformFilter_posthook(
     void *destData
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnTransformFilter_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -586,6 +616,7 @@ cudnnStatus_t cudnnSoftmaxForward_prehook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSoftmaxForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -618,6 +649,7 @@ cudnnStatus_t cudnnSoftmaxForward_posthook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSoftmaxForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -633,6 +665,7 @@ cudnnStatus_t cudnnPoolingForward_prehook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnPoolingForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -663,6 +696,7 @@ cudnnStatus_t cudnnPoolingForward_posthook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnPoolingForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -678,6 +712,7 @@ cudnnStatus_t cudnnActivationForward_prehook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnActivationForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -708,6 +743,7 @@ cudnnStatus_t cudnnActivationForward_posthook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnActivationForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -724,6 +760,7 @@ cudnnStatus_t cudnnLRNCrossChannelForward_prehook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnLRNCrossChannelForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -756,6 +793,7 @@ cudnnStatus_t cudnnLRNCrossChannelForward_posthook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnLRNCrossChannelForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -775,6 +813,7 @@ cudnnStatus_t cudnnDivisiveNormalizationForward_prehook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDivisiveNormalizationForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -813,6 +852,7 @@ cudnnStatus_t cudnnDivisiveNormalizationForward_posthook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDivisiveNormalizationForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -834,6 +874,7 @@ cudnnStatus_t cudnnBatchNormalizationForwardInference_prehook(
     double epsilon
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBatchNormalizationForwardInference_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -876,6 +917,7 @@ cudnnStatus_t cudnnBatchNormalizationForwardInference_posthook(
     double epsilon
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBatchNormalizationForwardInference_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -904,6 +946,7 @@ cudnnStatus_t cudnnNormalizationForwardInference_prehook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnNormalizationForwardInference_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -960,6 +1003,7 @@ cudnnStatus_t cudnnNormalizationForwardInference_posthook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnNormalizationForwardInference_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -971,6 +1015,7 @@ cudnnStatus_t cudnnSpatialTfGridGeneratorForward_prehook(
     void *grid
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSpatialTfGridGeneratorForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -993,6 +1038,7 @@ cudnnStatus_t cudnnSpatialTfGridGeneratorForward_posthook(
     void *grid
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSpatialTfGridGeneratorForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1009,6 +1055,7 @@ cudnnStatus_t cudnnSpatialTfSamplerForward_prehook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSpatialTfSamplerForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1041,6 +1088,7 @@ cudnnStatus_t cudnnSpatialTfSamplerForward_posthook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSpatialTfSamplerForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1050,6 +1098,7 @@ cudnnStatus_t cudnnDropoutGetStatesSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDropoutGetStatesSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1068,6 +1117,7 @@ cudnnStatus_t cudnnDropoutGetStatesSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDropoutGetStatesSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1083,6 +1133,7 @@ cudnnStatus_t cudnnDropoutForward_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDropoutForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1113,6 +1164,7 @@ cudnnStatus_t cudnnDropoutForward_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDropoutForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1123,6 +1175,7 @@ cudnnStatus_t cudnnGetAlgorithmSpaceSize_prehook(
     size_t *algoSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetAlgorithmSpaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1143,6 +1196,7 @@ cudnnStatus_t cudnnGetAlgorithmSpaceSize_posthook(
     size_t *algoSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetAlgorithmSpaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1154,6 +1208,7 @@ cudnnStatus_t cudnnSaveAlgorithm_prehook(
     size_t algoSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSaveAlgorithm_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1176,6 +1231,7 @@ cudnnStatus_t cudnnSaveAlgorithm_posthook(
     size_t algoSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSaveAlgorithm_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1187,6 +1243,7 @@ cudnnStatus_t cudnnRestoreAlgorithm_prehook(
     cudnnAlgorithmDescriptor_t algoDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRestoreAlgorithm_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1209,6 +1266,7 @@ cudnnStatus_t cudnnRestoreAlgorithm_posthook(
     cudnnAlgorithmDescriptor_t algoDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRestoreAlgorithm_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1227,6 +1285,7 @@ cudnnStatus_t cudnnSoftmaxBackward_prehook(
     void *dx
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSoftmaxBackward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1263,6 +1322,7 @@ cudnnStatus_t cudnnSoftmaxBackward_posthook(
     void *dx
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSoftmaxBackward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1282,6 +1342,7 @@ cudnnStatus_t cudnnPoolingBackward_prehook(
     void *dx
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnPoolingBackward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1320,6 +1381,7 @@ cudnnStatus_t cudnnPoolingBackward_posthook(
     void *dx
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnPoolingBackward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1339,6 +1401,7 @@ cudnnStatus_t cudnnActivationBackward_prehook(
     void *dx
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnActivationBackward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1377,6 +1440,7 @@ cudnnStatus_t cudnnActivationBackward_posthook(
     void *dx
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnActivationBackward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1397,6 +1461,7 @@ cudnnStatus_t cudnnLRNCrossChannelBackward_prehook(
     void *dx
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnLRNCrossChannelBackward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1437,6 +1502,7 @@ cudnnStatus_t cudnnLRNCrossChannelBackward_posthook(
     void *dx
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnLRNCrossChannelBackward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1458,6 +1524,7 @@ cudnnStatus_t cudnnDivisiveNormalizationBackward_prehook(
     void *dMeans
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDivisiveNormalizationBackward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1500,6 +1567,7 @@ cudnnStatus_t cudnnDivisiveNormalizationBackward_posthook(
     void *dMeans
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDivisiveNormalizationBackward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1516,6 +1584,7 @@ cudnnStatus_t cudnnGetBatchNormalizationForwardTrainingExWorkspaceSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetBatchNormalizationForwardTrainingExWorkspaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1548,6 +1617,7 @@ cudnnStatus_t cudnnGetBatchNormalizationForwardTrainingExWorkspaceSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetBatchNormalizationForwardTrainingExWorkspaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1566,6 +1636,7 @@ cudnnStatus_t cudnnGetBatchNormalizationBackwardExWorkspaceSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetBatchNormalizationBackwardExWorkspaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1602,6 +1673,7 @@ cudnnStatus_t cudnnGetBatchNormalizationBackwardExWorkspaceSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetBatchNormalizationBackwardExWorkspaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1615,6 +1687,7 @@ cudnnStatus_t cudnnGetBatchNormalizationTrainingExReserveSpaceSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetBatchNormalizationTrainingExReserveSpaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1641,6 +1714,7 @@ cudnnStatus_t cudnnGetBatchNormalizationTrainingExReserveSpaceSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetBatchNormalizationTrainingExReserveSpaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1665,6 +1739,7 @@ cudnnStatus_t cudnnBatchNormalizationForwardTraining_prehook(
     void *resultSaveInvVariance
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBatchNormalizationForwardTraining_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1713,6 +1788,7 @@ cudnnStatus_t cudnnBatchNormalizationForwardTraining_posthook(
     void *resultSaveInvVariance
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBatchNormalizationForwardTraining_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1745,6 +1821,7 @@ cudnnStatus_t cudnnBatchNormalizationForwardTrainingEx_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBatchNormalizationForwardTrainingEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1809,6 +1886,7 @@ cudnnStatus_t cudnnBatchNormalizationForwardTrainingEx_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBatchNormalizationForwardTrainingEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1835,6 +1913,7 @@ cudnnStatus_t cudnnBatchNormalizationBackward_prehook(
     const void *savedInvVariance
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBatchNormalizationBackward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1887,6 +1966,7 @@ cudnnStatus_t cudnnBatchNormalizationBackward_posthook(
     const void *savedInvVariance
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBatchNormalizationBackward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1924,6 +2004,7 @@ cudnnStatus_t cudnnBatchNormalizationBackwardEx_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBatchNormalizationBackwardEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -1998,6 +2079,7 @@ cudnnStatus_t cudnnBatchNormalizationBackwardEx_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBatchNormalizationBackwardEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2017,6 +2099,7 @@ cudnnStatus_t cudnnGetNormalizationForwardTrainingWorkspaceSize_prehook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetNormalizationForwardTrainingWorkspaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2055,6 +2138,7 @@ cudnnStatus_t cudnnGetNormalizationForwardTrainingWorkspaceSize_posthook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetNormalizationForwardTrainingWorkspaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2076,6 +2160,7 @@ cudnnStatus_t cudnnGetNormalizationBackwardWorkspaceSize_prehook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetNormalizationBackwardWorkspaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2118,6 +2203,7 @@ cudnnStatus_t cudnnGetNormalizationBackwardWorkspaceSize_posthook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetNormalizationBackwardWorkspaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2133,6 +2219,7 @@ cudnnStatus_t cudnnGetNormalizationTrainingReserveSpaceSize_prehook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetNormalizationTrainingReserveSpaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2163,6 +2250,7 @@ cudnnStatus_t cudnnGetNormalizationTrainingReserveSpaceSize_posthook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetNormalizationTrainingReserveSpaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2198,6 +2286,7 @@ cudnnStatus_t cudnnNormalizationForwardTraining_prehook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnNormalizationForwardTraining_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2268,6 +2357,7 @@ cudnnStatus_t cudnnNormalizationForwardTraining_posthook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnNormalizationForwardTraining_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2308,6 +2398,7 @@ cudnnStatus_t cudnnNormalizationBackward_prehook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnNormalizationBackward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2388,6 +2479,7 @@ cudnnStatus_t cudnnNormalizationBackward_posthook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnNormalizationBackward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2399,6 +2491,7 @@ cudnnStatus_t cudnnSpatialTfGridGeneratorBackward_prehook(
     void *dtheta
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSpatialTfGridGeneratorBackward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2421,6 +2514,7 @@ cudnnStatus_t cudnnSpatialTfGridGeneratorBackward_posthook(
     void *dtheta
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSpatialTfGridGeneratorBackward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2442,6 +2536,7 @@ cudnnStatus_t cudnnSpatialTfSamplerBackward_prehook(
     void *dgrid
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSpatialTfSamplerBackward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2484,6 +2579,7 @@ cudnnStatus_t cudnnSpatialTfSamplerBackward_posthook(
     void *dgrid
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSpatialTfSamplerBackward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2499,6 +2595,7 @@ cudnnStatus_t cudnnDropoutBackward_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDropoutBackward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2529,6 +2626,7 @@ cudnnStatus_t cudnnDropoutBackward_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDropoutBackward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2546,6 +2644,7 @@ cudnnStatus_t cudnnSetRNNDescriptor_v6_prehook(
     cudnnDataType_t mathPrec
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNDescriptor_v6_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2580,6 +2679,7 @@ cudnnStatus_t cudnnSetRNNDescriptor_v6_posthook(
     cudnnDataType_t mathPrec
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNDescriptor_v6_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2597,6 +2697,7 @@ cudnnStatus_t cudnnGetRNNDescriptor_v6_prehook(
     cudnnDataType_t *mathPrec
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNDescriptor_v6_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2631,6 +2732,7 @@ cudnnStatus_t cudnnGetRNNDescriptor_v6_posthook(
     cudnnDataType_t *mathPrec
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNDescriptor_v6_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2644,6 +2746,7 @@ cudnnStatus_t cudnnRNNSetClip_prehook(
     double rclip
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNSetClip_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2670,6 +2773,7 @@ cudnnStatus_t cudnnRNNSetClip_posthook(
     double rclip
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNSetClip_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2683,6 +2787,7 @@ cudnnStatus_t cudnnRNNGetClip_prehook(
     double *rclip
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNGetClip_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2709,6 +2814,7 @@ cudnnStatus_t cudnnRNNGetClip_posthook(
     double *rclip
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNGetClip_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2720,6 +2826,7 @@ cudnnStatus_t cudnnSetRNNProjectionLayers_prehook(
     const int outProjSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNProjectionLayers_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2742,6 +2849,7 @@ cudnnStatus_t cudnnSetRNNProjectionLayers_posthook(
     const int outProjSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNProjectionLayers_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2753,6 +2861,7 @@ cudnnStatus_t cudnnGetRNNProjectionLayers_prehook(
     int *outProjSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNProjectionLayers_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2775,6 +2884,7 @@ cudnnStatus_t cudnnGetRNNProjectionLayers_posthook(
     int *outProjSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNProjectionLayers_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2785,6 +2895,7 @@ cudnnStatus_t cudnnBuildRNNDynamic_prehook(
     int miniBatch
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBuildRNNDynamic_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2805,6 +2916,7 @@ cudnnStatus_t cudnnBuildRNNDynamic_posthook(
     int miniBatch
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBuildRNNDynamic_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2817,6 +2929,7 @@ cudnnStatus_t cudnnGetRNNWorkspaceSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNWorkspaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2841,6 +2954,7 @@ cudnnStatus_t cudnnGetRNNWorkspaceSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNWorkspaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2853,6 +2967,7 @@ cudnnStatus_t cudnnGetRNNTrainingReserveSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNTrainingReserveSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2877,6 +2992,7 @@ cudnnStatus_t cudnnGetRNNTrainingReserveSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNTrainingReserveSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2890,6 +3006,7 @@ cudnnStatus_t cudnnGetRNNTempSpaceSizes_prehook(
     size_t *reserveSpaceSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNTempSpaceSizes_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2916,6 +3033,7 @@ cudnnStatus_t cudnnGetRNNTempSpaceSizes_posthook(
     size_t *reserveSpaceSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNTempSpaceSizes_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2928,6 +3046,7 @@ cudnnStatus_t cudnnGetRNNParamsSize_prehook(
     cudnnDataType_t dataType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNParamsSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2952,6 +3071,7 @@ cudnnStatus_t cudnnGetRNNParamsSize_posthook(
     cudnnDataType_t dataType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNParamsSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2962,6 +3082,7 @@ cudnnStatus_t cudnnGetRNNWeightSpaceSize_prehook(
     size_t *weightSpaceSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNWeightSpaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2982,6 +3103,7 @@ cudnnStatus_t cudnnGetRNNWeightSpaceSize_posthook(
     size_t *weightSpaceSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNWeightSpaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -2998,6 +3120,7 @@ cudnnStatus_t cudnnGetRNNLinLayerMatrixParams_prehook(
     void **linLayerMat
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNLinLayerMatrixParams_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3030,6 +3153,7 @@ cudnnStatus_t cudnnGetRNNLinLayerMatrixParams_posthook(
     void **linLayerMat
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNLinLayerMatrixParams_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3046,6 +3170,7 @@ cudnnStatus_t cudnnGetRNNLinLayerBiasParams_prehook(
     void **linLayerBias
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNLinLayerBiasParams_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3078,6 +3203,7 @@ cudnnStatus_t cudnnGetRNNLinLayerBiasParams_posthook(
     void **linLayerBias
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNLinLayerBiasParams_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3095,6 +3221,7 @@ cudnnStatus_t cudnnGetRNNWeightParams_prehook(
     void **bAddr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNWeightParams_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3129,6 +3256,7 @@ cudnnStatus_t cudnnGetRNNWeightParams_posthook(
     void **bAddr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNWeightParams_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3155,6 +3283,7 @@ cudnnStatus_t cudnnRNNForwardInference_prehook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNForwardInference_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3207,6 +3336,7 @@ cudnnStatus_t cudnnRNNForwardInference_posthook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNForwardInference_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3240,6 +3370,7 @@ cudnnStatus_t cudnnRNNForwardInferenceEx_prehook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNForwardInferenceEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3306,6 +3437,7 @@ cudnnStatus_t cudnnRNNForwardInferenceEx_posthook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNForwardInferenceEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3333,6 +3465,7 @@ cudnnStatus_t cudnnRNNForward_prehook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3387,6 +3520,7 @@ cudnnStatus_t cudnnRNNForward_posthook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3397,6 +3531,7 @@ cudnnStatus_t cudnnSetRNNAlgorithmDescriptor_prehook(
     cudnnAlgorithmDescriptor_t algoDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNAlgorithmDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3417,6 +3552,7 @@ cudnnStatus_t cudnnSetRNNAlgorithmDescriptor_posthook(
     cudnnAlgorithmDescriptor_t algoDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNAlgorithmDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3427,6 +3563,7 @@ cudnnStatus_t cudnnGetRNNForwardInferenceAlgorithmMaxCount_prehook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNForwardInferenceAlgorithmMaxCount_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3447,6 +3584,7 @@ cudnnStatus_t cudnnGetRNNForwardInferenceAlgorithmMaxCount_posthook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNForwardInferenceAlgorithmMaxCount_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3477,6 +3615,7 @@ cudnnStatus_t cudnnFindRNNForwardInferenceAlgorithmEx_prehook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindRNNForwardInferenceAlgorithmEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3537,6 +3676,7 @@ cudnnStatus_t cudnnFindRNNForwardInferenceAlgorithmEx_posthook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindRNNForwardInferenceAlgorithmEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3549,6 +3689,7 @@ cudnnStatus_t cudnnGetMultiHeadAttnBuffers_prehook(
     size_t *reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetMultiHeadAttnBuffers_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3573,6 +3714,7 @@ cudnnStatus_t cudnnGetMultiHeadAttnBuffers_posthook(
     size_t *reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetMultiHeadAttnBuffers_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3587,6 +3729,7 @@ cudnnStatus_t cudnnGetMultiHeadAttnWeights_prehook(
     void **wAddr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetMultiHeadAttnWeights_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3615,6 +3758,7 @@ cudnnStatus_t cudnnGetMultiHeadAttnWeights_posthook(
     void **wAddr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetMultiHeadAttnWeights_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3644,6 +3788,7 @@ cudnnStatus_t cudnnMultiHeadAttnForward_prehook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnMultiHeadAttnForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3702,6 +3847,7 @@ cudnnStatus_t cudnnMultiHeadAttnForward_posthook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnMultiHeadAttnForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3730,6 +3876,7 @@ cudnnStatus_t cudnnRNNForwardTraining_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNForwardTraining_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3786,6 +3933,7 @@ cudnnStatus_t cudnnRNNForwardTraining_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNForwardTraining_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3820,6 +3968,7 @@ cudnnStatus_t cudnnRNNBackwardData_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardData_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3888,6 +4037,7 @@ cudnnStatus_t cudnnRNNBackwardData_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardData_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3917,6 +4067,7 @@ cudnnStatus_t cudnnRNNBackwardData_v8_prehook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardData_v8_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3975,6 +4126,7 @@ cudnnStatus_t cudnnRNNBackwardData_v8_posthook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardData_v8_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -3997,6 +4149,7 @@ cudnnStatus_t cudnnRNNBackwardWeights_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardWeights_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4041,6 +4194,7 @@ cudnnStatus_t cudnnRNNBackwardWeights_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardWeights_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4064,6 +4218,7 @@ cudnnStatus_t cudnnRNNBackwardWeights_v8_prehook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardWeights_v8_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4110,6 +4265,7 @@ cudnnStatus_t cudnnRNNBackwardWeights_v8_posthook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardWeights_v8_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4145,6 +4301,7 @@ cudnnStatus_t cudnnRNNForwardTrainingEx_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNForwardTrainingEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4215,6 +4372,7 @@ cudnnStatus_t cudnnRNNForwardTrainingEx_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNForwardTrainingEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4252,6 +4410,7 @@ cudnnStatus_t cudnnRNNBackwardDataEx_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardDataEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4326,6 +4485,7 @@ cudnnStatus_t cudnnRNNBackwardDataEx_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardDataEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4347,6 +4507,7 @@ cudnnStatus_t cudnnRNNBackwardWeightsEx_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardWeightsEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4389,6 +4550,7 @@ cudnnStatus_t cudnnRNNBackwardWeightsEx_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNBackwardWeightsEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4399,6 +4561,7 @@ cudnnStatus_t cudnnGetRNNForwardTrainingAlgorithmMaxCount_prehook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNForwardTrainingAlgorithmMaxCount_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4419,6 +4582,7 @@ cudnnStatus_t cudnnGetRNNForwardTrainingAlgorithmMaxCount_posthook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNForwardTrainingAlgorithmMaxCount_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4451,6 +4615,7 @@ cudnnStatus_t cudnnFindRNNForwardTrainingAlgorithmEx_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindRNNForwardTrainingAlgorithmEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4515,6 +4680,7 @@ cudnnStatus_t cudnnFindRNNForwardTrainingAlgorithmEx_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindRNNForwardTrainingAlgorithmEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4525,6 +4691,7 @@ cudnnStatus_t cudnnGetRNNBackwardDataAlgorithmMaxCount_prehook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNBackwardDataAlgorithmMaxCount_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4545,6 +4712,7 @@ cudnnStatus_t cudnnGetRNNBackwardDataAlgorithmMaxCount_posthook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNBackwardDataAlgorithmMaxCount_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4583,6 +4751,7 @@ cudnnStatus_t cudnnFindRNNBackwardDataAlgorithmEx_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindRNNBackwardDataAlgorithmEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4659,6 +4828,7 @@ cudnnStatus_t cudnnFindRNNBackwardDataAlgorithmEx_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindRNNBackwardDataAlgorithmEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4669,6 +4839,7 @@ cudnnStatus_t cudnnGetRNNBackwardWeightsAlgorithmMaxCount_prehook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNBackwardWeightsAlgorithmMaxCount_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4689,6 +4860,7 @@ cudnnStatus_t cudnnGetRNNBackwardWeightsAlgorithmMaxCount_posthook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNBackwardWeightsAlgorithmMaxCount_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4715,6 +4887,7 @@ cudnnStatus_t cudnnFindRNNBackwardWeightsAlgorithmEx_prehook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindRNNBackwardWeightsAlgorithmEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4767,6 +4940,7 @@ cudnnStatus_t cudnnFindRNNBackwardWeightsAlgorithmEx_posthook(
     size_t reserveSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindRNNBackwardWeightsAlgorithmEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4797,6 +4971,7 @@ cudnnStatus_t cudnnMultiHeadAttnBackwardData_prehook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnMultiHeadAttnBackwardData_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4857,6 +5032,7 @@ cudnnStatus_t cudnnMultiHeadAttnBackwardData_posthook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnMultiHeadAttnBackwardData_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4882,6 +5058,7 @@ cudnnStatus_t cudnnMultiHeadAttnBackwardWeights_prehook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnMultiHeadAttnBackwardWeights_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4932,6 +5109,7 @@ cudnnStatus_t cudnnMultiHeadAttnBackwardWeights_posthook(
     void *reserveSpace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnMultiHeadAttnBackwardWeights_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4952,6 +5130,7 @@ cudnnStatus_t cudnnCTCLoss_prehook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCTCLoss_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -4992,6 +5171,7 @@ cudnnStatus_t cudnnCTCLoss_posthook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCTCLoss_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5012,6 +5192,7 @@ cudnnStatus_t cudnnCTCLoss_v8_prehook(
     void *workspace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCTCLoss_v8_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5052,6 +5233,7 @@ cudnnStatus_t cudnnCTCLoss_v8_posthook(
     void *workspace
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCTCLoss_v8_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5068,6 +5250,7 @@ cudnnStatus_t cudnnGetCTCLossWorkspaceSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCTCLossWorkspaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5100,6 +5283,7 @@ cudnnStatus_t cudnnGetCTCLossWorkspaceSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCTCLossWorkspaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5113,6 +5297,7 @@ cudnnStatus_t cudnnGetCTCLossWorkspaceSize_v8_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCTCLossWorkspaceSize_v8_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5139,6 +5324,7 @@ cudnnStatus_t cudnnGetCTCLossWorkspaceSize_v8_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCTCLossWorkspaceSize_v8_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5148,6 +5334,7 @@ cudnnStatus_t cudnnGetConvolutionForwardAlgorithmMaxCount_prehook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionForwardAlgorithmMaxCount_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5166,6 +5353,7 @@ cudnnStatus_t cudnnGetConvolutionForwardAlgorithmMaxCount_posthook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionForwardAlgorithmMaxCount_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5181,6 +5369,7 @@ cudnnStatus_t cudnnGetConvolutionForwardAlgorithm_v7_prehook(
     cudnnConvolutionFwdAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionForwardAlgorithm_v7_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5211,6 +5400,7 @@ cudnnStatus_t cudnnGetConvolutionForwardAlgorithm_v7_posthook(
     cudnnConvolutionFwdAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionForwardAlgorithm_v7_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5226,6 +5416,7 @@ cudnnStatus_t cudnnFindConvolutionForwardAlgorithm_prehook(
     cudnnConvolutionFwdAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionForwardAlgorithm_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5256,6 +5447,7 @@ cudnnStatus_t cudnnFindConvolutionForwardAlgorithm_posthook(
     cudnnConvolutionFwdAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionForwardAlgorithm_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5276,6 +5468,7 @@ cudnnStatus_t cudnnFindConvolutionForwardAlgorithmEx_prehook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionForwardAlgorithmEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5316,6 +5509,7 @@ cudnnStatus_t cudnnFindConvolutionForwardAlgorithmEx_posthook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionForwardAlgorithmEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5329,6 +5523,7 @@ cudnnStatus_t cudnnIm2Col_prehook(
     void *colBuffer
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnIm2Col_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5355,6 +5550,7 @@ cudnnStatus_t cudnnIm2Col_posthook(
     void *colBuffer
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnIm2Col_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5370,6 +5566,7 @@ cudnnStatus_t cudnnReorderFilterAndBias_prehook(
     void *reorderedBiasData
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnReorderFilterAndBias_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5400,6 +5597,7 @@ cudnnStatus_t cudnnReorderFilterAndBias_posthook(
     void *reorderedBiasData
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnReorderFilterAndBias_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5414,6 +5612,7 @@ cudnnStatus_t cudnnGetConvolutionForwardWorkspaceSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionForwardWorkspaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5442,6 +5641,7 @@ cudnnStatus_t cudnnGetConvolutionForwardWorkspaceSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionForwardWorkspaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5462,6 +5662,7 @@ cudnnStatus_t cudnnConvolutionForward_prehook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnConvolutionForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5502,6 +5703,7 @@ cudnnStatus_t cudnnConvolutionForward_posthook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnConvolutionForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5527,6 +5729,7 @@ cudnnStatus_t cudnnConvolutionBiasActivationForward_prehook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnConvolutionBiasActivationForward_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5577,6 +5780,7 @@ cudnnStatus_t cudnnConvolutionBiasActivationForward_posthook(
     void *y
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnConvolutionBiasActivationForward_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5586,6 +5790,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardDataAlgorithmMaxCount_prehook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardDataAlgorithmMaxCount_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5604,6 +5809,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardDataAlgorithmMaxCount_posthook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardDataAlgorithmMaxCount_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5619,6 +5825,7 @@ cudnnStatus_t cudnnFindConvolutionBackwardDataAlgorithm_prehook(
     cudnnConvolutionBwdDataAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionBackwardDataAlgorithm_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5649,6 +5856,7 @@ cudnnStatus_t cudnnFindConvolutionBackwardDataAlgorithm_posthook(
     cudnnConvolutionBwdDataAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionBackwardDataAlgorithm_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5669,6 +5877,7 @@ cudnnStatus_t cudnnFindConvolutionBackwardDataAlgorithmEx_prehook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionBackwardDataAlgorithmEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5709,6 +5918,7 @@ cudnnStatus_t cudnnFindConvolutionBackwardDataAlgorithmEx_posthook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionBackwardDataAlgorithmEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5724,6 +5934,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardDataAlgorithm_v7_prehook(
     cudnnConvolutionBwdDataAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardDataAlgorithm_v7_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5754,6 +5965,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardDataAlgorithm_v7_posthook(
     cudnnConvolutionBwdDataAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardDataAlgorithm_v7_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5768,6 +5980,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardDataWorkspaceSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardDataWorkspaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5796,6 +6009,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardDataWorkspaceSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardDataWorkspaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5816,6 +6030,7 @@ cudnnStatus_t cudnnConvolutionBackwardData_prehook(
     void *dx
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnConvolutionBackwardData_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5856,6 +6071,7 @@ cudnnStatus_t cudnnConvolutionBackwardData_posthook(
     void *dx
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnConvolutionBackwardData_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5877,6 +6093,7 @@ cudnnStatus_t cudnnGetFoldedConvBackwardDataDescriptors_prehook(
     cudnnTensorTransformDescriptor_t gradUnfoldTransDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFoldedConvBackwardDataDescriptors_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5919,6 +6136,7 @@ cudnnStatus_t cudnnGetFoldedConvBackwardDataDescriptors_posthook(
     cudnnTensorTransformDescriptor_t gradUnfoldTransDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFoldedConvBackwardDataDescriptors_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5928,6 +6146,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardFilterAlgorithmMaxCount_prehook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardFilterAlgorithmMaxCount_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5946,6 +6165,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardFilterAlgorithmMaxCount_posthook(
     int *count
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardFilterAlgorithmMaxCount_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5961,6 +6181,7 @@ cudnnStatus_t cudnnFindConvolutionBackwardFilterAlgorithm_prehook(
     cudnnConvolutionBwdFilterAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionBackwardFilterAlgorithm_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -5991,6 +6212,7 @@ cudnnStatus_t cudnnFindConvolutionBackwardFilterAlgorithm_posthook(
     cudnnConvolutionBwdFilterAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionBackwardFilterAlgorithm_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6011,6 +6233,7 @@ cudnnStatus_t cudnnFindConvolutionBackwardFilterAlgorithmEx_prehook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionBackwardFilterAlgorithmEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6051,6 +6274,7 @@ cudnnStatus_t cudnnFindConvolutionBackwardFilterAlgorithmEx_posthook(
     size_t workSpaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFindConvolutionBackwardFilterAlgorithmEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6066,6 +6290,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardFilterAlgorithm_v7_prehook(
     cudnnConvolutionBwdFilterAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardFilterAlgorithm_v7_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6096,6 +6321,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardFilterAlgorithm_v7_posthook(
     cudnnConvolutionBwdFilterAlgoPerf_t *perfResults
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardFilterAlgorithm_v7_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6110,6 +6336,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardFilterWorkspaceSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardFilterWorkspaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6138,6 +6365,7 @@ cudnnStatus_t cudnnGetConvolutionBackwardFilterWorkspaceSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionBackwardFilterWorkspaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6158,6 +6386,7 @@ cudnnStatus_t cudnnConvolutionBackwardFilter_prehook(
     void *dw
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnConvolutionBackwardFilter_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6198,6 +6427,7 @@ cudnnStatus_t cudnnConvolutionBackwardFilter_posthook(
     void *dw
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnConvolutionBackwardFilter_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6212,6 +6442,7 @@ cudnnStatus_t cudnnConvolutionBackwardBias_prehook(
     void *db
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnConvolutionBackwardBias_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6240,6 +6471,7 @@ cudnnStatus_t cudnnConvolutionBackwardBias_posthook(
     void *db
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnConvolutionBackwardBias_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6251,6 +6483,7 @@ cudnnStatus_t cudnnMakeFusedOpsPlan_prehook(
     size_t *workspaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnMakeFusedOpsPlan_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6273,6 +6506,7 @@ cudnnStatus_t cudnnMakeFusedOpsPlan_posthook(
     size_t *workspaceSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnMakeFusedOpsPlan_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6283,6 +6517,7 @@ cudnnStatus_t cudnnFusedOpsExecute_prehook(
     cudnnFusedOpsVariantParamPack_t varPack
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFusedOpsExecute_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6303,6 +6538,7 @@ cudnnStatus_t cudnnFusedOpsExecute_posthook(
     cudnnFusedOpsVariantParamPack_t varPack
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnFusedOpsExecute_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6313,6 +6549,7 @@ cudnnStatus_t cudnnBackendExecute_prehook(
     cudnnBackendDescriptor_t variantPack
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendExecute_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6333,6 +6570,7 @@ cudnnStatus_t cudnnBackendExecute_posthook(
     cudnnBackendDescriptor_t variantPack
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendExecute_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6342,6 +6580,7 @@ cudnnStatus_t cudnnGetProperty_prehook(
     int *value
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetProperty_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6360,6 +6599,7 @@ cudnnStatus_t cudnnGetProperty_posthook(
     int *value
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetProperty_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6368,6 +6608,7 @@ cudnnStatus_t cudnnCreateTensorDescriptor_prehook(
     cudnnTensorDescriptor_t *tensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6384,6 +6625,7 @@ cudnnStatus_t cudnnCreateTensorDescriptor_posthook(
     cudnnTensorDescriptor_t *tensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6398,6 +6640,7 @@ cudnnStatus_t cudnnSetTensor4dDescriptor_prehook(
     int w
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensor4dDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6426,6 +6669,7 @@ cudnnStatus_t cudnnSetTensor4dDescriptor_posthook(
     int w
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensor4dDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6443,6 +6687,7 @@ cudnnStatus_t cudnnSetTensor4dDescriptorEx_prehook(
     int wStride
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensor4dDescriptorEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6477,6 +6722,7 @@ cudnnStatus_t cudnnSetTensor4dDescriptorEx_posthook(
     int wStride
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensor4dDescriptorEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6494,6 +6740,7 @@ cudnnStatus_t cudnnGetTensor4dDescriptor_prehook(
     int *wStride
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetTensor4dDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6528,6 +6775,7 @@ cudnnStatus_t cudnnGetTensor4dDescriptor_posthook(
     int *wStride
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetTensor4dDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6540,6 +6788,7 @@ cudnnStatus_t cudnnSetTensorNdDescriptor_prehook(
     const int strideA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensorNdDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6564,6 +6813,7 @@ cudnnStatus_t cudnnSetTensorNdDescriptor_posthook(
     const int strideA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensorNdDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6576,6 +6826,7 @@ cudnnStatus_t cudnnSetTensorNdDescriptorEx_prehook(
     const int dimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensorNdDescriptorEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6600,6 +6851,7 @@ cudnnStatus_t cudnnSetTensorNdDescriptorEx_posthook(
     const int dimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensorNdDescriptorEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6613,6 +6865,7 @@ cudnnStatus_t cudnnGetTensorNdDescriptor_prehook(
     int strideA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetTensorNdDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6639,6 +6892,7 @@ cudnnStatus_t cudnnGetTensorNdDescriptor_posthook(
     int strideA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetTensorNdDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6648,6 +6902,7 @@ cudnnStatus_t cudnnGetTensorSizeInBytes_prehook(
     size_t *size
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetTensorSizeInBytes_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6666,6 +6921,7 @@ cudnnStatus_t cudnnGetTensorSizeInBytes_posthook(
     size_t *size
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetTensorSizeInBytes_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6674,6 +6930,7 @@ cudnnStatus_t cudnnDestroyTensorDescriptor_prehook(
     cudnnTensorDescriptor_t tensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6690,6 +6947,7 @@ cudnnStatus_t cudnnDestroyTensorDescriptor_posthook(
     cudnnTensorDescriptor_t tensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6701,6 +6959,7 @@ cudnnStatus_t cudnnInitTransformDest_prehook(
     size_t *destSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnInitTransformDest_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6723,6 +6982,7 @@ cudnnStatus_t cudnnInitTransformDest_posthook(
     size_t *destSizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnInitTransformDest_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6731,6 +6991,7 @@ cudnnStatus_t cudnnCreateTensorTransformDescriptor_prehook(
     cudnnTensorTransformDescriptor_t *transformDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateTensorTransformDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6747,6 +7008,7 @@ cudnnStatus_t cudnnCreateTensorTransformDescriptor_posthook(
     cudnnTensorTransformDescriptor_t *transformDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateTensorTransformDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6761,6 +7023,7 @@ cudnnStatus_t cudnnSetTensorTransformDescriptor_prehook(
     const cudnnFoldingDirection_t direction
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensorTransformDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6789,6 +7052,7 @@ cudnnStatus_t cudnnSetTensorTransformDescriptor_posthook(
     const cudnnFoldingDirection_t direction
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetTensorTransformDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6803,6 +7067,7 @@ cudnnStatus_t cudnnGetTensorTransformDescriptor_prehook(
     cudnnFoldingDirection_t *direction
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetTensorTransformDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6831,6 +7096,7 @@ cudnnStatus_t cudnnGetTensorTransformDescriptor_posthook(
     cudnnFoldingDirection_t *direction
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetTensorTransformDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6839,6 +7105,7 @@ cudnnStatus_t cudnnDestroyTensorTransformDescriptor_prehook(
     cudnnTensorTransformDescriptor_t transformDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyTensorTransformDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6855,6 +7122,7 @@ cudnnStatus_t cudnnDestroyTensorTransformDescriptor_posthook(
     cudnnTensorTransformDescriptor_t transformDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyTensorTransformDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6863,6 +7131,7 @@ cudnnStatus_t cudnnCreateOpTensorDescriptor_prehook(
     cudnnOpTensorDescriptor_t *opTensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateOpTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6879,6 +7148,7 @@ cudnnStatus_t cudnnCreateOpTensorDescriptor_posthook(
     cudnnOpTensorDescriptor_t *opTensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateOpTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6890,6 +7160,7 @@ cudnnStatus_t cudnnSetOpTensorDescriptor_prehook(
     cudnnNanPropagation_t opTensorNanOpt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetOpTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6912,6 +7183,7 @@ cudnnStatus_t cudnnSetOpTensorDescriptor_posthook(
     cudnnNanPropagation_t opTensorNanOpt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetOpTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6923,6 +7195,7 @@ cudnnStatus_t cudnnGetOpTensorDescriptor_prehook(
     cudnnNanPropagation_t *opTensorNanOpt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetOpTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6945,6 +7218,7 @@ cudnnStatus_t cudnnGetOpTensorDescriptor_posthook(
     cudnnNanPropagation_t *opTensorNanOpt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetOpTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6953,6 +7227,7 @@ cudnnStatus_t cudnnDestroyOpTensorDescriptor_prehook(
     cudnnOpTensorDescriptor_t opTensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyOpTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6969,6 +7244,7 @@ cudnnStatus_t cudnnDestroyOpTensorDescriptor_posthook(
     cudnnOpTensorDescriptor_t opTensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyOpTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6977,6 +7253,7 @@ cudnnStatus_t cudnnCreateReduceTensorDescriptor_prehook(
     cudnnReduceTensorDescriptor_t *reduceTensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateReduceTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -6993,6 +7270,7 @@ cudnnStatus_t cudnnCreateReduceTensorDescriptor_posthook(
     cudnnReduceTensorDescriptor_t *reduceTensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateReduceTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7006,6 +7284,7 @@ cudnnStatus_t cudnnSetReduceTensorDescriptor_prehook(
     cudnnIndicesType_t reduceTensorIndicesType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetReduceTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7032,6 +7311,7 @@ cudnnStatus_t cudnnSetReduceTensorDescriptor_posthook(
     cudnnIndicesType_t reduceTensorIndicesType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetReduceTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7045,6 +7325,7 @@ cudnnStatus_t cudnnGetReduceTensorDescriptor_prehook(
     cudnnIndicesType_t *reduceTensorIndicesType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetReduceTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7071,6 +7352,7 @@ cudnnStatus_t cudnnGetReduceTensorDescriptor_posthook(
     cudnnIndicesType_t *reduceTensorIndicesType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetReduceTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7079,6 +7361,7 @@ cudnnStatus_t cudnnDestroyReduceTensorDescriptor_prehook(
     cudnnReduceTensorDescriptor_t reduceTensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyReduceTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7095,6 +7378,7 @@ cudnnStatus_t cudnnDestroyReduceTensorDescriptor_posthook(
     cudnnReduceTensorDescriptor_t reduceTensorDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyReduceTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7103,6 +7387,7 @@ cudnnStatus_t cudnnCreateFilterDescriptor_prehook(
     cudnnFilterDescriptor_t *filterDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateFilterDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7119,6 +7404,7 @@ cudnnStatus_t cudnnCreateFilterDescriptor_posthook(
     cudnnFilterDescriptor_t *filterDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateFilterDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7133,6 +7419,7 @@ cudnnStatus_t cudnnSetFilter4dDescriptor_prehook(
     int w
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetFilter4dDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7161,6 +7448,7 @@ cudnnStatus_t cudnnSetFilter4dDescriptor_posthook(
     int w
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetFilter4dDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7175,6 +7463,7 @@ cudnnStatus_t cudnnGetFilter4dDescriptor_prehook(
     int *w
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFilter4dDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7203,6 +7492,7 @@ cudnnStatus_t cudnnGetFilter4dDescriptor_posthook(
     int *w
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFilter4dDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7215,6 +7505,7 @@ cudnnStatus_t cudnnSetFilterNdDescriptor_prehook(
     const int filterDimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetFilterNdDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7239,6 +7530,7 @@ cudnnStatus_t cudnnSetFilterNdDescriptor_posthook(
     const int filterDimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetFilterNdDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7252,6 +7544,7 @@ cudnnStatus_t cudnnGetFilterNdDescriptor_prehook(
     int filterDimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFilterNdDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7278,6 +7571,7 @@ cudnnStatus_t cudnnGetFilterNdDescriptor_posthook(
     int filterDimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFilterNdDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7287,6 +7581,7 @@ cudnnStatus_t cudnnGetFilterSizeInBytes_prehook(
     size_t *size
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFilterSizeInBytes_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7305,6 +7600,7 @@ cudnnStatus_t cudnnGetFilterSizeInBytes_posthook(
     size_t *size
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFilterSizeInBytes_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7313,6 +7609,7 @@ cudnnStatus_t cudnnDestroyFilterDescriptor_prehook(
     cudnnFilterDescriptor_t filterDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyFilterDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7329,6 +7626,7 @@ cudnnStatus_t cudnnDestroyFilterDescriptor_posthook(
     cudnnFilterDescriptor_t filterDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyFilterDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7337,6 +7635,7 @@ cudnnStatus_t cudnnCreatePoolingDescriptor_prehook(
     cudnnPoolingDescriptor_t *poolingDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreatePoolingDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7353,6 +7652,7 @@ cudnnStatus_t cudnnCreatePoolingDescriptor_posthook(
     cudnnPoolingDescriptor_t *poolingDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreatePoolingDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7369,6 +7669,7 @@ cudnnStatus_t cudnnSetPooling2dDescriptor_prehook(
     int horizontalStride
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetPooling2dDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7401,6 +7702,7 @@ cudnnStatus_t cudnnSetPooling2dDescriptor_posthook(
     int horizontalStride
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetPooling2dDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7417,6 +7719,7 @@ cudnnStatus_t cudnnGetPooling2dDescriptor_prehook(
     int *horizontalStride
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetPooling2dDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7449,6 +7752,7 @@ cudnnStatus_t cudnnGetPooling2dDescriptor_posthook(
     int *horizontalStride
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetPooling2dDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7463,6 +7767,7 @@ cudnnStatus_t cudnnSetPoolingNdDescriptor_prehook(
     const int strideA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetPoolingNdDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7491,6 +7796,7 @@ cudnnStatus_t cudnnSetPoolingNdDescriptor_posthook(
     const int strideA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetPoolingNdDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7506,6 +7812,7 @@ cudnnStatus_t cudnnGetPoolingNdDescriptor_prehook(
     int strideA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetPoolingNdDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7536,6 +7843,7 @@ cudnnStatus_t cudnnGetPoolingNdDescriptor_posthook(
     int strideA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetPoolingNdDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7547,6 +7855,7 @@ cudnnStatus_t cudnnGetPoolingNdForwardOutputDim_prehook(
     int outputTensorDimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetPoolingNdForwardOutputDim_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7569,6 +7878,7 @@ cudnnStatus_t cudnnGetPoolingNdForwardOutputDim_posthook(
     int outputTensorDimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetPoolingNdForwardOutputDim_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7582,6 +7892,7 @@ cudnnStatus_t cudnnGetPooling2dForwardOutputDim_prehook(
     int *w
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetPooling2dForwardOutputDim_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7608,6 +7919,7 @@ cudnnStatus_t cudnnGetPooling2dForwardOutputDim_posthook(
     int *w
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetPooling2dForwardOutputDim_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7616,6 +7928,7 @@ cudnnStatus_t cudnnDestroyPoolingDescriptor_prehook(
     cudnnPoolingDescriptor_t poolingDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyPoolingDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7632,6 +7945,7 @@ cudnnStatus_t cudnnDestroyPoolingDescriptor_posthook(
     cudnnPoolingDescriptor_t poolingDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyPoolingDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7640,6 +7954,7 @@ cudnnStatus_t cudnnCreateActivationDescriptor_prehook(
     cudnnActivationDescriptor_t *activationDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateActivationDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7656,6 +7971,7 @@ cudnnStatus_t cudnnCreateActivationDescriptor_posthook(
     cudnnActivationDescriptor_t *activationDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateActivationDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7667,6 +7983,7 @@ cudnnStatus_t cudnnSetActivationDescriptor_prehook(
     double coef
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetActivationDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7689,6 +8006,7 @@ cudnnStatus_t cudnnSetActivationDescriptor_posthook(
     double coef
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetActivationDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7700,6 +8018,7 @@ cudnnStatus_t cudnnGetActivationDescriptor_prehook(
     double *coef
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetActivationDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7722,6 +8041,7 @@ cudnnStatus_t cudnnGetActivationDescriptor_posthook(
     double *coef
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetActivationDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7731,6 +8051,7 @@ cudnnStatus_t cudnnSetActivationDescriptorSwishBeta_prehook(
     double swish_beta
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetActivationDescriptorSwishBeta_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7749,6 +8070,7 @@ cudnnStatus_t cudnnSetActivationDescriptorSwishBeta_posthook(
     double swish_beta
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetActivationDescriptorSwishBeta_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7758,6 +8080,7 @@ cudnnStatus_t cudnnGetActivationDescriptorSwishBeta_prehook(
     double *swish_beta
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetActivationDescriptorSwishBeta_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7776,6 +8099,7 @@ cudnnStatus_t cudnnGetActivationDescriptorSwishBeta_posthook(
     double *swish_beta
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetActivationDescriptorSwishBeta_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7784,6 +8108,7 @@ cudnnStatus_t cudnnDestroyActivationDescriptor_prehook(
     cudnnActivationDescriptor_t activationDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyActivationDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7800,6 +8125,7 @@ cudnnStatus_t cudnnDestroyActivationDescriptor_posthook(
     cudnnActivationDescriptor_t activationDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyActivationDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7808,6 +8134,7 @@ cudnnStatus_t cudnnCreateLRNDescriptor_prehook(
     cudnnLRNDescriptor_t *normDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateLRNDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7824,6 +8151,7 @@ cudnnStatus_t cudnnCreateLRNDescriptor_posthook(
     cudnnLRNDescriptor_t *normDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateLRNDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7836,6 +8164,7 @@ cudnnStatus_t cudnnSetLRNDescriptor_prehook(
     double lrnK
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetLRNDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7860,6 +8189,7 @@ cudnnStatus_t cudnnSetLRNDescriptor_posthook(
     double lrnK
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetLRNDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7872,6 +8202,7 @@ cudnnStatus_t cudnnGetLRNDescriptor_prehook(
     double *lrnK
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetLRNDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7896,6 +8227,7 @@ cudnnStatus_t cudnnGetLRNDescriptor_posthook(
     double *lrnK
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetLRNDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7904,6 +8236,7 @@ cudnnStatus_t cudnnDestroyLRNDescriptor_prehook(
     cudnnLRNDescriptor_t lrnDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyLRNDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7920,6 +8253,7 @@ cudnnStatus_t cudnnDestroyLRNDescriptor_posthook(
     cudnnLRNDescriptor_t lrnDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyLRNDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7930,6 +8264,7 @@ cudnnStatus_t cudnnDeriveBNTensorDescriptor_prehook(
     cudnnBatchNormMode_t mode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDeriveBNTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7950,6 +8285,7 @@ cudnnStatus_t cudnnDeriveBNTensorDescriptor_posthook(
     cudnnBatchNormMode_t mode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDeriveBNTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7962,6 +8298,7 @@ cudnnStatus_t cudnnDeriveNormTensorDescriptor_prehook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDeriveNormTensorDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7986,6 +8323,7 @@ cudnnStatus_t cudnnDeriveNormTensorDescriptor_posthook(
     int groupCnt
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDeriveNormTensorDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -7994,6 +8332,7 @@ cudnnStatus_t cudnnCreateSpatialTransformerDescriptor_prehook(
     cudnnSpatialTransformerDescriptor_t *stDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateSpatialTransformerDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8010,6 +8349,7 @@ cudnnStatus_t cudnnCreateSpatialTransformerDescriptor_posthook(
     cudnnSpatialTransformerDescriptor_t *stDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateSpatialTransformerDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8022,6 +8362,7 @@ cudnnStatus_t cudnnSetSpatialTransformerNdDescriptor_prehook(
     const int dimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetSpatialTransformerNdDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8046,6 +8387,7 @@ cudnnStatus_t cudnnSetSpatialTransformerNdDescriptor_posthook(
     const int dimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetSpatialTransformerNdDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8054,6 +8396,7 @@ cudnnStatus_t cudnnDestroySpatialTransformerDescriptor_prehook(
     cudnnSpatialTransformerDescriptor_t stDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroySpatialTransformerDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8070,6 +8413,7 @@ cudnnStatus_t cudnnDestroySpatialTransformerDescriptor_posthook(
     cudnnSpatialTransformerDescriptor_t stDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroySpatialTransformerDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8078,6 +8422,7 @@ cudnnStatus_t cudnnCreateDropoutDescriptor_prehook(
     cudnnDropoutDescriptor_t *dropoutDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateDropoutDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8094,6 +8439,7 @@ cudnnStatus_t cudnnCreateDropoutDescriptor_posthook(
     cudnnDropoutDescriptor_t *dropoutDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateDropoutDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8102,6 +8448,7 @@ cudnnStatus_t cudnnDestroyDropoutDescriptor_prehook(
     cudnnDropoutDescriptor_t dropoutDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyDropoutDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8118,6 +8465,7 @@ cudnnStatus_t cudnnDestroyDropoutDescriptor_posthook(
     cudnnDropoutDescriptor_t dropoutDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyDropoutDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8127,6 +8475,7 @@ cudnnStatus_t cudnnDropoutGetReserveSpaceSize_prehook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDropoutGetReserveSpaceSize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8145,6 +8494,7 @@ cudnnStatus_t cudnnDropoutGetReserveSpaceSize_posthook(
     size_t *sizeInBytes
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDropoutGetReserveSpaceSize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8158,6 +8508,7 @@ cudnnStatus_t cudnnSetDropoutDescriptor_prehook(
     unsigned long long seed
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetDropoutDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8184,6 +8535,7 @@ cudnnStatus_t cudnnSetDropoutDescriptor_posthook(
     unsigned long long seed
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetDropoutDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8197,6 +8549,7 @@ cudnnStatus_t cudnnRestoreDropoutDescriptor_prehook(
     unsigned long long seed
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRestoreDropoutDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8223,6 +8576,7 @@ cudnnStatus_t cudnnRestoreDropoutDescriptor_posthook(
     unsigned long long seed
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRestoreDropoutDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8235,6 +8589,7 @@ cudnnStatus_t cudnnGetDropoutDescriptor_prehook(
     unsigned long long *seed
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetDropoutDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8259,6 +8614,7 @@ cudnnStatus_t cudnnGetDropoutDescriptor_posthook(
     unsigned long long *seed
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetDropoutDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8267,6 +8623,7 @@ cudnnStatus_t cudnnCreateAlgorithmDescriptor_prehook(
     cudnnAlgorithmDescriptor_t *algoDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateAlgorithmDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8283,6 +8640,7 @@ cudnnStatus_t cudnnCreateAlgorithmDescriptor_posthook(
     cudnnAlgorithmDescriptor_t *algoDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateAlgorithmDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8292,6 +8650,7 @@ cudnnStatus_t cudnnSetAlgorithmDescriptor_prehook(
     cudnnAlgorithm_t algorithm
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetAlgorithmDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8310,6 +8669,7 @@ cudnnStatus_t cudnnSetAlgorithmDescriptor_posthook(
     cudnnAlgorithm_t algorithm
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetAlgorithmDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8319,6 +8679,7 @@ cudnnStatus_t cudnnGetAlgorithmDescriptor_prehook(
     cudnnAlgorithm_t *algorithm
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetAlgorithmDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8337,6 +8698,7 @@ cudnnStatus_t cudnnGetAlgorithmDescriptor_posthook(
     cudnnAlgorithm_t *algorithm
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetAlgorithmDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8346,6 +8708,7 @@ cudnnStatus_t cudnnCopyAlgorithmDescriptor_prehook(
     cudnnAlgorithmDescriptor_t dest
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCopyAlgorithmDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8364,6 +8727,7 @@ cudnnStatus_t cudnnCopyAlgorithmDescriptor_posthook(
     cudnnAlgorithmDescriptor_t dest
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCopyAlgorithmDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8372,6 +8736,7 @@ cudnnStatus_t cudnnDestroyAlgorithmDescriptor_prehook(
     cudnnAlgorithmDescriptor_t algoDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyAlgorithmDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8388,6 +8753,7 @@ cudnnStatus_t cudnnDestroyAlgorithmDescriptor_posthook(
     cudnnAlgorithmDescriptor_t algoDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyAlgorithmDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8397,6 +8763,7 @@ cudnnStatus_t cudnnCreateAlgorithmPerformance_prehook(
     int numberToCreate
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateAlgorithmPerformance_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8415,6 +8782,7 @@ cudnnStatus_t cudnnCreateAlgorithmPerformance_posthook(
     int numberToCreate
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateAlgorithmPerformance_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8427,6 +8795,7 @@ cudnnStatus_t cudnnSetAlgorithmPerformance_prehook(
     size_t memory
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetAlgorithmPerformance_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8451,6 +8820,7 @@ cudnnStatus_t cudnnSetAlgorithmPerformance_posthook(
     size_t memory
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetAlgorithmPerformance_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8463,6 +8833,7 @@ cudnnStatus_t cudnnGetAlgorithmPerformance_prehook(
     size_t *memory
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetAlgorithmPerformance_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8487,6 +8858,7 @@ cudnnStatus_t cudnnGetAlgorithmPerformance_posthook(
     size_t *memory
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetAlgorithmPerformance_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8496,6 +8868,7 @@ cudnnStatus_t cudnnDestroyAlgorithmPerformance_prehook(
     int numberToDestroy
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyAlgorithmPerformance_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8514,6 +8887,7 @@ cudnnStatus_t cudnnDestroyAlgorithmPerformance_posthook(
     int numberToDestroy
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyAlgorithmPerformance_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8524,6 +8898,7 @@ cudnnStatus_t cudnnSetCallback_prehook(
     cudnnCallback_t fptr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetCallback_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8544,6 +8919,7 @@ cudnnStatus_t cudnnSetCallback_posthook(
     cudnnCallback_t fptr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetCallback_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8554,6 +8930,7 @@ cudnnStatus_t cudnnGetCallback_prehook(
     cudnnCallback_t *fptr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCallback_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8574,6 +8951,7 @@ cudnnStatus_t cudnnGetCallback_posthook(
     cudnnCallback_t *fptr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCallback_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8582,6 +8960,7 @@ cudnnStatus_t cudnnOpsInferVersionCheck_prehook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnOpsInferVersionCheck_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8598,6 +8977,7 @@ cudnnStatus_t cudnnOpsInferVersionCheck_posthook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnOpsInferVersionCheck_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8606,6 +8986,7 @@ cudnnStatus_t cudnnOpsTrainVersionCheck_prehook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnOpsTrainVersionCheck_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8622,6 +9003,7 @@ cudnnStatus_t cudnnOpsTrainVersionCheck_posthook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnOpsTrainVersionCheck_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8630,6 +9012,7 @@ cudnnStatus_t cudnnCreateRNNDescriptor_prehook(
     cudnnRNNDescriptor_t *rnnDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateRNNDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8646,6 +9029,7 @@ cudnnStatus_t cudnnCreateRNNDescriptor_posthook(
     cudnnRNNDescriptor_t *rnnDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateRNNDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8654,6 +9038,7 @@ cudnnStatus_t cudnnDestroyRNNDescriptor_prehook(
     cudnnRNNDescriptor_t rnnDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyRNNDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8670,6 +9055,7 @@ cudnnStatus_t cudnnDestroyRNNDescriptor_posthook(
     cudnnRNNDescriptor_t rnnDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyRNNDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8692,6 +9078,7 @@ cudnnStatus_t cudnnSetRNNDescriptor_v8_prehook(
     uint32_t auxFlags
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNDescriptor_v8_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8736,6 +9123,7 @@ cudnnStatus_t cudnnSetRNNDescriptor_v8_posthook(
     uint32_t auxFlags
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNDescriptor_v8_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8758,6 +9146,7 @@ cudnnStatus_t cudnnGetRNNDescriptor_v8_prehook(
     uint32_t *auxFlags
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNDescriptor_v8_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8802,6 +9191,7 @@ cudnnStatus_t cudnnGetRNNDescriptor_v8_posthook(
     uint32_t *auxFlags
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNDescriptor_v8_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8811,6 +9201,7 @@ cudnnStatus_t cudnnSetRNNMatrixMathType_prehook(
     cudnnMathType_t mType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNMatrixMathType_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8829,6 +9220,7 @@ cudnnStatus_t cudnnSetRNNMatrixMathType_posthook(
     cudnnMathType_t mType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNMatrixMathType_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8838,6 +9230,7 @@ cudnnStatus_t cudnnGetRNNMatrixMathType_prehook(
     cudnnMathType_t *mType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNMatrixMathType_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8856,6 +9249,7 @@ cudnnStatus_t cudnnGetRNNMatrixMathType_posthook(
     cudnnMathType_t *mType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNMatrixMathType_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8865,6 +9259,7 @@ cudnnStatus_t cudnnSetRNNBiasMode_prehook(
     cudnnRNNBiasMode_t biasMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNBiasMode_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8883,6 +9278,7 @@ cudnnStatus_t cudnnSetRNNBiasMode_posthook(
     cudnnRNNBiasMode_t biasMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNBiasMode_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8892,6 +9288,7 @@ cudnnStatus_t cudnnGetRNNBiasMode_prehook(
     cudnnRNNBiasMode_t *biasMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNBiasMode_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8910,6 +9307,7 @@ cudnnStatus_t cudnnGetRNNBiasMode_posthook(
     cudnnRNNBiasMode_t *biasMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNBiasMode_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8922,6 +9320,7 @@ cudnnStatus_t cudnnRNNSetClip_v8_prehook(
     double rclip
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNSetClip_v8_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8946,6 +9345,7 @@ cudnnStatus_t cudnnRNNSetClip_v8_posthook(
     double rclip
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNSetClip_v8_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8958,6 +9358,7 @@ cudnnStatus_t cudnnRNNGetClip_v8_prehook(
     double *rclip
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNGetClip_v8_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8982,6 +9383,7 @@ cudnnStatus_t cudnnRNNGetClip_v8_posthook(
     double *rclip
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnRNNGetClip_v8_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -8993,6 +9395,7 @@ cudnnStatus_t cudnnCreatePersistentRNNPlan_prehook(
     cudnnPersistentRNNPlan_t *plan
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreatePersistentRNNPlan_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9015,6 +9418,7 @@ cudnnStatus_t cudnnCreatePersistentRNNPlan_posthook(
     cudnnPersistentRNNPlan_t *plan
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreatePersistentRNNPlan_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9023,6 +9427,7 @@ cudnnStatus_t cudnnDestroyPersistentRNNPlan_prehook(
     cudnnPersistentRNNPlan_t plan
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyPersistentRNNPlan_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9039,6 +9444,7 @@ cudnnStatus_t cudnnDestroyPersistentRNNPlan_posthook(
     cudnnPersistentRNNPlan_t plan
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyPersistentRNNPlan_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9048,6 +9454,7 @@ cudnnStatus_t cudnnSetPersistentRNNPlan_prehook(
     cudnnPersistentRNNPlan_t plan
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetPersistentRNNPlan_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9066,6 +9473,7 @@ cudnnStatus_t cudnnSetPersistentRNNPlan_posthook(
     cudnnPersistentRNNPlan_t plan
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetPersistentRNNPlan_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9075,6 +9483,7 @@ cudnnStatus_t cudnnSetRNNPaddingMode_prehook(
     unsigned paddingMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNPaddingMode_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9093,6 +9502,7 @@ cudnnStatus_t cudnnSetRNNPaddingMode_posthook(
     unsigned paddingMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNPaddingMode_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9102,6 +9512,7 @@ cudnnStatus_t cudnnGetRNNPaddingMode_prehook(
     unsigned *paddingMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNPaddingMode_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9120,6 +9531,7 @@ cudnnStatus_t cudnnGetRNNPaddingMode_posthook(
     unsigned *paddingMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNPaddingMode_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9128,6 +9540,7 @@ cudnnStatus_t cudnnCreateRNNDataDescriptor_prehook(
     cudnnRNNDataDescriptor_t *rnnDataDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateRNNDataDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9144,6 +9557,7 @@ cudnnStatus_t cudnnCreateRNNDataDescriptor_posthook(
     cudnnRNNDataDescriptor_t *rnnDataDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateRNNDataDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9152,6 +9566,7 @@ cudnnStatus_t cudnnDestroyRNNDataDescriptor_prehook(
     cudnnRNNDataDescriptor_t rnnDataDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyRNNDataDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9168,6 +9583,7 @@ cudnnStatus_t cudnnDestroyRNNDataDescriptor_posthook(
     cudnnRNNDataDescriptor_t rnnDataDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyRNNDataDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9183,6 +9599,7 @@ cudnnStatus_t cudnnSetRNNDataDescriptor_prehook(
     void *paddingFill
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNDataDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9213,6 +9630,7 @@ cudnnStatus_t cudnnSetRNNDataDescriptor_posthook(
     void *paddingFill
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetRNNDataDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9229,6 +9647,7 @@ cudnnStatus_t cudnnGetRNNDataDescriptor_prehook(
     void *paddingFill
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNDataDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9261,6 +9680,7 @@ cudnnStatus_t cudnnGetRNNDataDescriptor_posthook(
     void *paddingFill
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetRNNDataDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9269,6 +9689,7 @@ cudnnStatus_t cudnnCreateSeqDataDescriptor_prehook(
     cudnnSeqDataDescriptor_t *seqDataDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateSeqDataDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9285,6 +9706,7 @@ cudnnStatus_t cudnnCreateSeqDataDescriptor_posthook(
     cudnnSeqDataDescriptor_t *seqDataDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateSeqDataDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9293,6 +9715,7 @@ cudnnStatus_t cudnnDestroySeqDataDescriptor_prehook(
     cudnnSeqDataDescriptor_t seqDataDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroySeqDataDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9309,6 +9732,7 @@ cudnnStatus_t cudnnDestroySeqDataDescriptor_posthook(
     cudnnSeqDataDescriptor_t seqDataDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroySeqDataDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9324,6 +9748,7 @@ cudnnStatus_t cudnnSetSeqDataDescriptor_prehook(
     void *paddingFill
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetSeqDataDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9354,6 +9779,7 @@ cudnnStatus_t cudnnSetSeqDataDescriptor_posthook(
     void *paddingFill
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetSeqDataDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9371,6 +9797,7 @@ cudnnStatus_t cudnnGetSeqDataDescriptor_prehook(
     void *paddingFill
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetSeqDataDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9405,6 +9832,7 @@ cudnnStatus_t cudnnGetSeqDataDescriptor_posthook(
     void *paddingFill
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetSeqDataDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9413,6 +9841,7 @@ cudnnStatus_t cudnnCreateAttnDescriptor_prehook(
     cudnnAttnDescriptor_t *attnDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateAttnDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9429,6 +9858,7 @@ cudnnStatus_t cudnnCreateAttnDescriptor_posthook(
     cudnnAttnDescriptor_t *attnDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateAttnDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9437,6 +9867,7 @@ cudnnStatus_t cudnnDestroyAttnDescriptor_prehook(
     cudnnAttnDescriptor_t attnDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyAttnDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9453,6 +9884,7 @@ cudnnStatus_t cudnnDestroyAttnDescriptor_posthook(
     cudnnAttnDescriptor_t attnDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyAttnDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9480,6 +9912,7 @@ cudnnStatus_t cudnnSetAttnDescriptor_prehook(
     int maxBeamSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetAttnDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9534,6 +9967,7 @@ cudnnStatus_t cudnnSetAttnDescriptor_posthook(
     int maxBeamSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetAttnDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9561,6 +9995,7 @@ cudnnStatus_t cudnnGetAttnDescriptor_prehook(
     int *maxBeamSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetAttnDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9615,6 +10050,7 @@ cudnnStatus_t cudnnGetAttnDescriptor_posthook(
     int *maxBeamSize
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetAttnDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9623,6 +10059,7 @@ cudnnStatus_t cudnnAdvInferVersionCheck_prehook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnAdvInferVersionCheck_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9639,6 +10076,7 @@ cudnnStatus_t cudnnAdvInferVersionCheck_posthook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnAdvInferVersionCheck_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9647,6 +10085,7 @@ cudnnStatus_t cudnnCreateCTCLossDescriptor_prehook(
     cudnnCTCLossDescriptor_t *ctcLossDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateCTCLossDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9663,6 +10102,7 @@ cudnnStatus_t cudnnCreateCTCLossDescriptor_posthook(
     cudnnCTCLossDescriptor_t *ctcLossDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateCTCLossDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9672,6 +10112,7 @@ cudnnStatus_t cudnnSetCTCLossDescriptor_prehook(
     cudnnDataType_t compType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetCTCLossDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9690,6 +10131,7 @@ cudnnStatus_t cudnnSetCTCLossDescriptor_posthook(
     cudnnDataType_t compType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetCTCLossDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9701,6 +10143,7 @@ cudnnStatus_t cudnnSetCTCLossDescriptorEx_prehook(
     cudnnNanPropagation_t gradMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetCTCLossDescriptorEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9723,6 +10166,7 @@ cudnnStatus_t cudnnSetCTCLossDescriptorEx_posthook(
     cudnnNanPropagation_t gradMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetCTCLossDescriptorEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9735,6 +10179,7 @@ cudnnStatus_t cudnnSetCTCLossDescriptor_v8_prehook(
     int maxLabelLength
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetCTCLossDescriptor_v8_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9759,6 +10204,7 @@ cudnnStatus_t cudnnSetCTCLossDescriptor_v8_posthook(
     int maxLabelLength
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetCTCLossDescriptor_v8_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9768,6 +10214,7 @@ cudnnStatus_t cudnnGetCTCLossDescriptor_prehook(
     cudnnDataType_t *compType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCTCLossDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9786,6 +10233,7 @@ cudnnStatus_t cudnnGetCTCLossDescriptor_posthook(
     cudnnDataType_t *compType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCTCLossDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9797,6 +10245,7 @@ cudnnStatus_t cudnnGetCTCLossDescriptorEx_prehook(
     cudnnNanPropagation_t *gradMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCTCLossDescriptorEx_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9819,6 +10268,7 @@ cudnnStatus_t cudnnGetCTCLossDescriptorEx_posthook(
     cudnnNanPropagation_t *gradMode
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCTCLossDescriptorEx_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9831,6 +10281,7 @@ cudnnStatus_t cudnnGetCTCLossDescriptor_v8_prehook(
     int *maxLabelLength
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCTCLossDescriptor_v8_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9855,6 +10306,7 @@ cudnnStatus_t cudnnGetCTCLossDescriptor_v8_posthook(
     int *maxLabelLength
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetCTCLossDescriptor_v8_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9863,6 +10315,7 @@ cudnnStatus_t cudnnDestroyCTCLossDescriptor_prehook(
     cudnnCTCLossDescriptor_t ctcLossDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyCTCLossDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9879,6 +10332,7 @@ cudnnStatus_t cudnnDestroyCTCLossDescriptor_posthook(
     cudnnCTCLossDescriptor_t ctcLossDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyCTCLossDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9887,6 +10341,7 @@ cudnnStatus_t cudnnAdvTrainVersionCheck_prehook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnAdvTrainVersionCheck_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9903,6 +10358,7 @@ cudnnStatus_t cudnnAdvTrainVersionCheck_posthook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnAdvTrainVersionCheck_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9911,6 +10367,7 @@ cudnnStatus_t cudnnCreateConvolutionDescriptor_prehook(
     cudnnConvolutionDescriptor_t *convDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateConvolutionDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9927,6 +10384,7 @@ cudnnStatus_t cudnnCreateConvolutionDescriptor_posthook(
     cudnnConvolutionDescriptor_t *convDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateConvolutionDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9935,6 +10393,7 @@ cudnnStatus_t cudnnDestroyConvolutionDescriptor_prehook(
     cudnnConvolutionDescriptor_t convDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyConvolutionDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9951,6 +10410,7 @@ cudnnStatus_t cudnnDestroyConvolutionDescriptor_posthook(
     cudnnConvolutionDescriptor_t convDesc
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyConvolutionDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9960,6 +10420,7 @@ cudnnStatus_t cudnnSetConvolutionMathType_prehook(
     cudnnMathType_t mathType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetConvolutionMathType_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9978,6 +10439,7 @@ cudnnStatus_t cudnnSetConvolutionMathType_posthook(
     cudnnMathType_t mathType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetConvolutionMathType_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -9987,6 +10449,7 @@ cudnnStatus_t cudnnGetConvolutionMathType_prehook(
     cudnnMathType_t *mathType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionMathType_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10005,6 +10468,7 @@ cudnnStatus_t cudnnGetConvolutionMathType_posthook(
     cudnnMathType_t *mathType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionMathType_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10014,6 +10478,7 @@ cudnnStatus_t cudnnSetConvolutionGroupCount_prehook(
     int groupCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetConvolutionGroupCount_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10032,6 +10497,7 @@ cudnnStatus_t cudnnSetConvolutionGroupCount_posthook(
     int groupCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetConvolutionGroupCount_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10041,6 +10507,7 @@ cudnnStatus_t cudnnGetConvolutionGroupCount_prehook(
     int *groupCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionGroupCount_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10059,6 +10526,7 @@ cudnnStatus_t cudnnGetConvolutionGroupCount_posthook(
     int *groupCount
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionGroupCount_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10068,6 +10536,7 @@ cudnnStatus_t cudnnSetConvolutionReorderType_prehook(
     cudnnReorderType_t reorderType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetConvolutionReorderType_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10086,6 +10555,7 @@ cudnnStatus_t cudnnSetConvolutionReorderType_posthook(
     cudnnReorderType_t reorderType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetConvolutionReorderType_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10095,6 +10565,7 @@ cudnnStatus_t cudnnGetConvolutionReorderType_prehook(
     cudnnReorderType_t *reorderType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionReorderType_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10113,6 +10584,7 @@ cudnnStatus_t cudnnGetConvolutionReorderType_posthook(
     cudnnReorderType_t *reorderType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionReorderType_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10129,6 +10601,7 @@ cudnnStatus_t cudnnSetConvolution2dDescriptor_prehook(
     cudnnDataType_t computeType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetConvolution2dDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10161,6 +10634,7 @@ cudnnStatus_t cudnnSetConvolution2dDescriptor_posthook(
     cudnnDataType_t computeType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetConvolution2dDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10177,6 +10651,7 @@ cudnnStatus_t cudnnGetConvolution2dDescriptor_prehook(
     cudnnDataType_t *computeType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolution2dDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10209,6 +10684,7 @@ cudnnStatus_t cudnnGetConvolution2dDescriptor_posthook(
     cudnnDataType_t *computeType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolution2dDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10223,6 +10699,7 @@ cudnnStatus_t cudnnSetConvolutionNdDescriptor_prehook(
     cudnnDataType_t computeType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetConvolutionNdDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10251,6 +10728,7 @@ cudnnStatus_t cudnnSetConvolutionNdDescriptor_posthook(
     cudnnDataType_t computeType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetConvolutionNdDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10266,6 +10744,7 @@ cudnnStatus_t cudnnGetConvolutionNdDescriptor_prehook(
     cudnnDataType_t *computeType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionNdDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10296,6 +10775,7 @@ cudnnStatus_t cudnnGetConvolutionNdDescriptor_posthook(
     cudnnDataType_t *computeType
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionNdDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10310,6 +10790,7 @@ cudnnStatus_t cudnnGetConvolution2dForwardOutputDim_prehook(
     int *w
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolution2dForwardOutputDim_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10338,6 +10819,7 @@ cudnnStatus_t cudnnGetConvolution2dForwardOutputDim_posthook(
     int *w
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolution2dForwardOutputDim_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10350,6 +10832,7 @@ cudnnStatus_t cudnnGetConvolutionNdForwardOutputDim_prehook(
     int tensorOuputDimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionNdForwardOutputDim_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10374,6 +10857,7 @@ cudnnStatus_t cudnnGetConvolutionNdForwardOutputDim_posthook(
     int tensorOuputDimA[]
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetConvolutionNdForwardOutputDim_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10382,6 +10866,7 @@ cudnnStatus_t cudnnCnnInferVersionCheck_prehook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCnnInferVersionCheck_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10398,6 +10883,7 @@ cudnnStatus_t cudnnCnnInferVersionCheck_posthook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCnnInferVersionCheck_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10407,6 +10893,7 @@ cudnnStatus_t cudnnCreateFusedOpsConstParamPack_prehook(
     cudnnFusedOps_t ops
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateFusedOpsConstParamPack_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10425,6 +10912,7 @@ cudnnStatus_t cudnnCreateFusedOpsConstParamPack_posthook(
     cudnnFusedOps_t ops
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateFusedOpsConstParamPack_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10433,6 +10921,7 @@ cudnnStatus_t cudnnDestroyFusedOpsConstParamPack_prehook(
     cudnnFusedOpsConstParamPack_t constPack
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyFusedOpsConstParamPack_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10449,6 +10938,7 @@ cudnnStatus_t cudnnDestroyFusedOpsConstParamPack_posthook(
     cudnnFusedOpsConstParamPack_t constPack
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyFusedOpsConstParamPack_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10459,6 +10949,7 @@ cudnnStatus_t cudnnSetFusedOpsConstParamPackAttribute_prehook(
     const void *param
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetFusedOpsConstParamPackAttribute_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10479,6 +10970,7 @@ cudnnStatus_t cudnnSetFusedOpsConstParamPackAttribute_posthook(
     const void *param
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetFusedOpsConstParamPackAttribute_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10490,6 +10982,7 @@ cudnnStatus_t cudnnGetFusedOpsConstParamPackAttribute_prehook(
     int *isNULL
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFusedOpsConstParamPackAttribute_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10512,6 +11005,7 @@ cudnnStatus_t cudnnGetFusedOpsConstParamPackAttribute_posthook(
     int *isNULL
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFusedOpsConstParamPackAttribute_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10521,6 +11015,7 @@ cudnnStatus_t cudnnCreateFusedOpsVariantParamPack_prehook(
     cudnnFusedOps_t ops
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateFusedOpsVariantParamPack_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10539,6 +11034,7 @@ cudnnStatus_t cudnnCreateFusedOpsVariantParamPack_posthook(
     cudnnFusedOps_t ops
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateFusedOpsVariantParamPack_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10547,6 +11043,7 @@ cudnnStatus_t cudnnDestroyFusedOpsVariantParamPack_prehook(
     cudnnFusedOpsVariantParamPack_t varPack
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyFusedOpsVariantParamPack_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10563,6 +11060,7 @@ cudnnStatus_t cudnnDestroyFusedOpsVariantParamPack_posthook(
     cudnnFusedOpsVariantParamPack_t varPack
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyFusedOpsVariantParamPack_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10573,6 +11071,7 @@ cudnnStatus_t cudnnSetFusedOpsVariantParamPackAttribute_prehook(
     void *ptr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetFusedOpsVariantParamPackAttribute_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10593,6 +11092,7 @@ cudnnStatus_t cudnnSetFusedOpsVariantParamPackAttribute_posthook(
     void *ptr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnSetFusedOpsVariantParamPackAttribute_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10603,6 +11103,7 @@ cudnnStatus_t cudnnGetFusedOpsVariantParamPackAttribute_prehook(
     void *ptr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFusedOpsVariantParamPackAttribute_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10623,6 +11124,7 @@ cudnnStatus_t cudnnGetFusedOpsVariantParamPackAttribute_posthook(
     void *ptr
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnGetFusedOpsVariantParamPackAttribute_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10632,6 +11134,7 @@ cudnnStatus_t cudnnCreateFusedOpsPlan_prehook(
     cudnnFusedOps_t ops
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateFusedOpsPlan_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10650,6 +11153,7 @@ cudnnStatus_t cudnnCreateFusedOpsPlan_posthook(
     cudnnFusedOps_t ops
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCreateFusedOpsPlan_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10658,6 +11162,7 @@ cudnnStatus_t cudnnDestroyFusedOpsPlan_prehook(
     cudnnFusedOpsPlan_t plan
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyFusedOpsPlan_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10674,6 +11179,7 @@ cudnnStatus_t cudnnDestroyFusedOpsPlan_posthook(
     cudnnFusedOpsPlan_t plan
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnDestroyFusedOpsPlan_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10682,6 +11188,7 @@ cudnnStatus_t cudnnCnnTrainVersionCheck_prehook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCnnTrainVersionCheck_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10698,6 +11205,7 @@ cudnnStatus_t cudnnCnnTrainVersionCheck_posthook(
 
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnCnnTrainVersionCheck_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10707,6 +11215,7 @@ cudnnStatus_t cudnnBackendCreateDescriptor_prehook(
     cudnnBackendDescriptor_t *descriptor
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendCreateDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10725,6 +11234,7 @@ cudnnStatus_t cudnnBackendCreateDescriptor_posthook(
     cudnnBackendDescriptor_t *descriptor
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendCreateDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10733,6 +11243,7 @@ cudnnStatus_t cudnnBackendDestroyDescriptor_prehook(
     cudnnBackendDescriptor_t descriptor
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendDestroyDescriptor_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10749,6 +11260,7 @@ cudnnStatus_t cudnnBackendDestroyDescriptor_posthook(
     cudnnBackendDescriptor_t descriptor
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendDestroyDescriptor_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10757,6 +11269,7 @@ cudnnStatus_t cudnnBackendInitialize_prehook(
     cudnnBackendDescriptor_t descriptor
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendInitialize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10773,6 +11286,7 @@ cudnnStatus_t cudnnBackendInitialize_posthook(
     cudnnBackendDescriptor_t descriptor
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendInitialize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10781,6 +11295,7 @@ cudnnStatus_t cudnnBackendFinalize_prehook(
     cudnnBackendDescriptor_t descriptor
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendFinalize_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10797,6 +11312,7 @@ cudnnStatus_t cudnnBackendFinalize_posthook(
     cudnnBackendDescriptor_t descriptor
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendFinalize_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10809,6 +11325,7 @@ cudnnStatus_t cudnnBackendSetAttribute_prehook(
     const void *arrayOfElements
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendSetAttribute_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10833,6 +11350,7 @@ cudnnStatus_t cudnnBackendSetAttribute_posthook(
     const void *arrayOfElements
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendSetAttribute_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10846,6 +11364,7 @@ cudnnStatus_t cudnnBackendGetAttribute_prehook(
     void *arrayOfElements
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendGetAttribute_pre\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
@@ -10872,6 +11391,7 @@ cudnnStatus_t cudnnBackendGetAttribute_posthook(
     void *arrayOfElements
 ) {
     DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cudnnBackendGetAttribute_pos\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDNN_STATUS_SUCCESS;
 }
