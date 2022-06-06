@@ -1,2 +1,8 @@
 *.o
 libcuhook.so
+
+cuda_hook_parser/codegen/lex.yy.c
+cuda_hook_parser/codegen/y.tab.c
+cuda_hook_parser/codegen/y.tab.h
+cuda_hook_parser/codegen/y.output
+cuda_hook_parser/codegen/codegen

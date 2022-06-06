@@ -20,3 +20,4 @@ LD_PRELOAD=libcuhook.so ./app
     - `CUDA_HOOK_PROXY_ENABLE`: Enable cuda proxy mechanism.
     - `CUDNN_HOOK_ENABLE`: Enable cudnn hook mechanism.
     - `CUDNN_HOOK_PROXY_ENABLE`: Enable cudnn proxy mechanism.
+- `cuda_hook_parser`: Parse cuda/cudnn api functions and generate primary hook code.

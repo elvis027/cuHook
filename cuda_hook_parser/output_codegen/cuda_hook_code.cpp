@@ -1,42 +1,113 @@
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <pthread.h>
-
-#include <cuda.h>
-
-#include "hook.h"
-#include "cuda_hook.h"
-#include "debug.h"
-
-#ifdef _CUDA_HOOK_ENABLE
-
-static struct cudaHookInfo cuda_hook_info;
-static pthread_once_t cuda_hook_init_done = PTHREAD_ONCE_INIT;
-
-/* prehook, proxy, posthook functions start */
-CUresult cuGetProcAddress_prehook(
-    const char *symbol,
-    void **pfn,
-    int cudaVersion,
-    cuuint64_t flags
-) {
-    DEBUG("[%s] Enter func\n", __func__);
-    DEBUG("[%s] Leave func\n", __func__);
-    return CUDA_SUCCESS;
+// hook.cpp
+void *dlsym(void *handle, const char *symbol)
+{
+    /* Hook functions for cuda version < 11.3 */
+    if(strcmp(symbol, SYMBOL_STRING(cuGetProcAddress)) == 0) {
+        return (void *)cuGetProcAddress;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemAlloc)) == 0) {
+        return (void *)cuMemAlloc;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemAllocManaged)) == 0) {
+        return (void *)cuMemAllocManaged;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemAllocPitch)) == 0) {
+        return (void *)cuMemAllocPitch;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemFree)) == 0) {
+        return (void *)cuMemFree;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemcpy)) == 0) {
+        return (void *)cuMemcpy;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemcpyAsync)) == 0) {
+        return (void *)cuMemcpyAsync;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemcpyDtoD)) == 0) {
+        return (void *)cuMemcpyDtoD;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemcpyDtoDAsync)) == 0) {
+        return (void *)cuMemcpyDtoDAsync;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemcpyDtoH)) == 0) {
+        return (void *)cuMemcpyDtoH;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemcpyDtoHAsync)) == 0) {
+        return (void *)cuMemcpyDtoHAsync;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemcpyHtoD)) == 0) {
+        return (void *)cuMemcpyHtoD;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemcpyHtoDAsync)) == 0) {
+        return (void *)cuMemcpyHtoDAsync;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemcpyPeer)) == 0) {
+        return (void *)cuMemcpyPeer;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemcpyPeerAsync)) == 0) {
+        return (void *)cuMemcpyPeerAsync;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD16)) == 0) {
+        return (void *)cuMemsetD16;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD16Async)) == 0) {
+        return (void *)cuMemsetD16Async;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD2D16)) == 0) {
+        return (void *)cuMemsetD2D16;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD2D16Async)) == 0) {
+        return (void *)cuMemsetD2D16Async;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD2D32)) == 0) {
+        return (void *)cuMemsetD2D32;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD2D32Async)) == 0) {
+        return (void *)cuMemsetD2D32Async;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD2D8)) == 0) {
+        return (void *)cuMemsetD2D8;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD2D8Async)) == 0) {
+        return (void *)cuMemsetD2D8Async;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD32)) == 0) {
+        return (void *)cuMemsetD32;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD32Async)) == 0) {
+        return (void *)cuMemsetD32Async;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD8)) == 0) {
+        return (void *)cuMemsetD8;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemsetD8Async)) == 0) {
+        return (void *)cuMemsetD8Async;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemAllocAsync)) == 0) {
+        return (void *)cuMemAllocAsync;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuMemFreeAsync)) == 0) {
+        return (void *)cuMemFreeAsync;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuLaunchCooperativeKernel)) == 0) {
+        return (void *)cuLaunchCooperativeKernel;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuLaunchHostFunc)) == 0) {
+        return (void *)cuLaunchHostFunc;
+    } else if(strcmp(symbol, SYMBOL_STRING(cuLaunchKernel)) == 0) {
+        return (void *)cuLaunchKernel;
+    }
 }
 
-CUresult cuGetProcAddress_proxy(
-    const char *symbol,
-    void **pfn,
-    int cudaVersion,
-    cuuint64_t flags
-) {
-    DEBUG("[%s] Enter func\n", __func__);
-    DEBUG("[%s] Leave func\n", __func__);
-    return CUDA_SUCCESS;
-}
+// cuda_hook.h
+enum cudaHookSymbols {
+    CU_GET_PROC_ADDRESS,
+    CU_MEM_ALLOC,
+    CU_MEM_ALLOC_MANAGED,
+    CU_MEM_ALLOC_PITCH,
+    CU_MEM_FREE,
+    CU_MEMCPY,
+    CU_MEMCPY_ASYNC,
+    CU_MEMCPY_DTO_D,
+    CU_MEMCPY_DTO_D_ASYNC,
+    CU_MEMCPY_DTO_H,
+    CU_MEMCPY_DTO_H_ASYNC,
+    CU_MEMCPY_HTO_D,
+    CU_MEMCPY_HTO_D_ASYNC,
+    CU_MEMCPY_PEER,
+    CU_MEMCPY_PEER_ASYNC,
+    CU_MEMSET_D16,
+    CU_MEMSET_D16_ASYNC,
+    CU_MEMSET_D2D16,
+    CU_MEMSET_D2D16_ASYNC,
+    CU_MEMSET_D2D32,
+    CU_MEMSET_D2D32_ASYNC,
+    CU_MEMSET_D2D8,
+    CU_MEMSET_D2D8_ASYNC,
+    CU_MEMSET_D32,
+    CU_MEMSET_D32_ASYNC,
+    CU_MEMSET_D8,
+    CU_MEMSET_D8_ASYNC,
+    CU_MEM_ALLOC_ASYNC,
+    CU_MEM_FREE_ASYNC,
+    CU_LAUNCH_COOPERATIVE_KERNEL,
+    CU_LAUNCH_HOST_FUNC,
+    CU_LAUNCH_KERNEL,
+    NUM_CUDA_HOOK_SYMBOLS
+};
 
+// cuda_hook.cpp
+/* ****************************** replace posthook of cuGetProcAddress() ****************************** */
 /* cuGetProcAddress() is the entry of cuda api functions for cuda version >= 11.3 */
 CUresult cuGetProcAddress_posthook(
     const char *symbol,
@@ -175,6 +246,42 @@ CUresult cuGetProcAddress_posthook(
         cuda_hook_info.func_actual[CU_LAUNCH_KERNEL] = *pfn;
         *pfn = (void *)cuLaunchKernel;
     }
+    DEBUG("[%s] Leave func\n", __func__);
+    return CUDA_SUCCESS;
+}
+/* ****************************** replace posthook of cuGetProcAddress() ****************************** */
+
+/* prehook, proxy, posthook functions start */
+CUresult cuGetProcAddress_prehook(
+    const char *symbol,
+    void **pfn,
+    int cudaVersion,
+    cuuint64_t flags
+) {
+    DEBUG("[%s] Enter func\n", __func__);
+    DEBUG("[%s] Leave func\n", __func__);
+    return CUDA_SUCCESS;
+}
+
+CUresult cuGetProcAddress_proxy(
+    const char *symbol,
+    void **pfn,
+    int cudaVersion,
+    cuuint64_t flags
+) {
+    DEBUG("[%s] Enter func\n", __func__);
+    DEBUG("[%s] Leave func\n", __func__);
+    return CUDA_SUCCESS;
+}
+
+CUresult cuGetProcAddress_posthook(
+    const char *symbol,
+    void **pfn,
+    int cudaVersion,
+    cuuint64_t flags
+) {
+    DEBUG("[%s] Enter func\n", __func__);
+    DUMP_TRACE("cuGetProcAddress\n");
     DEBUG("[%s] Leave func\n", __func__);
     return CUDA_SUCCESS;
 }
@@ -1800,5 +1907,3 @@ CUDA_HOOK_GEN(
     blockDimX, blockDimY, blockDimZ, sharedMemBytes,
     hStream, kernelParams, extra)
 /* hook function end */
-
-#endif /* _CUDA_HOOK_ENABLE */
