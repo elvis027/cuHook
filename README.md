@@ -17,4 +17,4 @@ LD_PRELOAD=libcuhook.so ./app
     - `DUMP_ENABLE`: Dump hooked functions trace.
     - `CUDA_HOOK_EFFECT_ENABLE`: Enable cuda hook effect.
     - `CUDNN_HOOK_EFFECT_ENABLE`: Enable cudnn hook effect.
-- `cuda_hook_parser/`: Parse cuda/cudnn api functions and generate primary hook code.
+- `hook_parser/`: Parse cuda/cudnn api functions and generate primary hook code.

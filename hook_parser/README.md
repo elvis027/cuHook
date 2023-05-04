@@ -1,4 +1,4 @@
-# cuda Hook Parser
+# Hook Parser
 Parse cuda/cudnn api functions and generate primary hook code.
 
 ## Usage
