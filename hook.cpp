@@ -17,19 +17,12 @@ void *libdl_handle;
 void *libcuda_handle;
 void *libcudnn_handle;
 
-logging::log hook_log;
-logging::log trace_dump;
+logging::log hook_log("hook_log.txt");
+logging::log trace_dump("trace.txt");
 
 __attribute__((constructor))
 void hook_init(void)
 {
-    hook_log.open("hook_log.txt");
-    hook_log.debug("Hook Init");
-
-#ifdef _TRACE_DUMP_ENABLE
-    trace_dump.open("trace.txt");
-#endif
-
     libdl_handle = dlopen("libdl.so", RTLD_LAZY);
     libcuda_handle = dlopen("libcuda.so", RTLD_LAZY);
     libcudnn_handle = dlopen("libcudnn.so", RTLD_LAZY);
@@ -38,7 +31,7 @@ void hook_init(void)
 __attribute__((destructor))
 void hook_fini(void)
 {
-    hook_log.debug("Hook Fini");
+
 }
 
 void *actual_dlsym(void *handle, const char *symbol)

@@ -38,37 +38,37 @@ public:
     {
 #ifdef _DEBUG_ENABLE
         std::lock_guard<std::mutex> _lock(mtx);
-        log_file << "DEBUG :" << message << std::endl;
+        log_file << "[DEBUG]: " << message << std::endl;
 #endif
     }
     void debug(const char *message)
     {
 #ifdef _DEBUG_ENABLE
         std::lock_guard<std::mutex> _lock(mtx);
-        log_file << "DEBUG :" << message << std::endl;
+        log_file << "[DEBUG]: " << message << std::endl;
 #endif
     }
     void info(const std::string &message)
     {
         std::lock_guard<std::mutex> _lock(mtx);
-        log_file << "INFO :" << message << std::endl;
+        log_file << "[INFO]: " << message << std::endl;
     }
     void info(const char *message)
     {
         std::lock_guard<std::mutex> _lock(mtx);
-        log_file << "INFO :" << message << std::endl;
+        log_file << "[INFO]: " << message << std::endl;
     }
     void error(const std::string &message)
     {
         std::lock_guard<std::mutex> _lock(mtx);
-        std::cerr << "ERROR :" << message << std::endl;
-        log_file << "ERROR :" << message << std::endl;
+        std::cerr << "[ERROR]: " << message << std::endl;
+        log_file << "[ERROR]: " << message << std::endl;
     }
     void error(const char *message)
     {
         std::lock_guard<std::mutex> _lock(mtx);
-        std::cerr << "ERROR :" << message << std::endl;
-        log_file << "ERROR :" << message << std::endl;
+        std::cerr << "[ERROR]: " << message << std::endl;
+        log_file << "[ERROR]: " << message << std::endl;
     }
     void dump(const std::string &message)
     {
