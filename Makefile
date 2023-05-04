@@ -1,11 +1,8 @@
 DEBUG_ENABLE ?= 1
-INFO_ENABLE ?= 1
-TRACE_DUMP_ENABLE ?= 1
+DUMP_ENABLE ?= 0
 
-CUDA_HOOK_ENABLE ?= 1
-CUDA_HOOK_PROXY_ENABLE ?= 0
-CUDNN_HOOK_ENABLE ?= 1
-CUDNN_HOOK_PROXY_ENABLE ?= 0
+CUDA_HOOK_EFFECT_ENABLE ?= 1
+CUDNN_HOOK_EFFECT_ENABLE ?= 1
 
 CUDA_PATH ?= /opt/cuda
 CUDNN_PATH ?= /usr
@@ -15,58 +12,53 @@ NVCC ?= $(CUDA_PATH)/bin/nvcc -ccbin $(CXX)
 
 SMS ?= 35 37 50 52 60 61 70 75 80 86
 $(foreach sm,$(SMS),$(eval GENCODE_FLAGS += -gencode arch=compute_$(sm),code=sm_$(sm)))
+HIGHEST_SM := $(lastword $(sort $(SMS)))
+GENCODE_FLAGS += -gencode arch=compute_$(HIGHEST_SM),code=compute_$(HIGHEST_SM)
 
-CXXFLAGS += -std=c++11 -fPIC -pthread
+CXXFLAGS += -std=c++17 -fPIC -pthread
 ifeq ($(DEBUG_ENABLE),1)
 CXXFLAGS += -D_DEBUG_ENABLE -g -Wall
 else
 CXXFLAGS += -O2
 endif
-ifeq ($(INFO_ENABLE),1)
-CXXFLAGS += -D_INFO_ENABLE
+ifeq ($(DUMP_ENABLE),1)
+CXXFLAGS += -D_DUMP_ENABLE
 endif
-ifeq ($(TRACE_DUMP_ENABLE),1)
-CXXFLAGS += -D_TRACE_DUMP_ENABLE
+ifeq ($(CUDA_HOOK_EFFECT_ENABLE),1)
+CXXFLAGS += -D_CUDA_HOOK_EFFECT_ENABLE
+endif
+ifeq ($(CUDNN_HOOK_EFFECT_ENABLE),1)
+CXXFLAGS += -D_CUDNN_HOOK_EFFECT_ENABLE
 endif
 
-ifeq ($(CUDA_HOOK_ENABLE),1)
-CXXFLAGS += -D_CUDA_HOOK_ENABLE
-endif
-ifeq ($(CUDA_HOOK_PROXY_ENABLE),1)
-CXXFLAGS += -D_CUDA_HOOK_PROXY_ENABLE
-endif
-ifeq ($(CUDNN_HOOK_ENABLE),1)
-CXXFLAGS += -D_CUDNN_HOOK_ENABLE
-endif
-ifeq ($(CUDNN_HOOK_PROXY_ENABLE),1)
-CXXFLAGS += -D_CUDNN_HOOK_PROXY_ENABLE
-endif
+HOST_INCLUDE +=
+HOST_LDFLAGS += -ldl -lrt
 
 CUDA_INCLUDE += -I$(CUDA_PATH)/include
-CUDNN_INCLUDE += -I$(CUDNN_PATH)/include
-NVCC_INCLUDE += $(CUDA_INCLUDE) $(CUDNN_INCLUDE)
-
-LDFLAGS += -ldl -lrt
 CUDA_LDFLAGS += -lcuda -L$(CUDA_PATH)/lib64 -L$(CUDA_PATH)/lib64/stubs
+
+CUDNN_INCLUDE += -I$(CUDNN_PATH)/include
 CUDNN_LDFLAGS += -lcudnn -L$(CUDNN_PATH)/lib64
-NVCC_LDFLAGS += $(CUDA_LDFLAGS) $(CUDNN_LDFLAGS)
+
+ALL_INCLUDE += $(HOST_INCLUDE) $(CUDA_INCLUDE) $(CUDNN_INCLUDE)
+ALL_LDFLAGS += $(HOST_LDFLAGS) $(CUDA_LDFLAGS) $(CUDNN_LDFLAGS)
 
 TARGETS = libcuhook.so
 
 .PHONY: all
 all: $(TARGETS)
 
-libcuhook.so: hook.o cuda_hook.o cudnn_hook.o
-	$(NVCC) -shared -m64 -Xcompiler "$(CXXFLAGS)" $(GENCODE_FLAGS) -o $@ $^ $(NVCC_INCLUDE) $(NVCC_LDFLAGS) $(LDFLAGS)
+libcuhook.so: cuda_hook.o cudnn_hook.o hook.o
+	$(NVCC) -shared -m64 -Xcompiler "$(CXXFLAGS)" $(GENCODE_FLAGS) -o $@ $^ $(ALL_INCLUDE) $(ALL_LDFLAGS)
 
-hook.o: hook.cpp hook.h debug.h
-	$(NVCC) -m64 -Xcompiler "$(CXXFLAGS)" $(GENCODE_FLAGS) -o $@ -c $< $(NVCC_INCLUDE)
+cuda_hook.o: cuda_hook.cpp cuda_hook.hpp hook.hpp logging.hpp
+	$(NVCC) -m64 -Xcompiler "$(CXXFLAGS)" $(GENCODE_FLAGS) -o $@ -c $< $(ALL_INCLUDE)
 
-cuda_hook.o: cuda_hook.cpp cuda_hook.h hook.h debug.h
-	$(NVCC) -m64 -Xcompiler "$(CXXFLAGS)" $(GENCODE_FLAGS) -o $@ -c $< $(NVCC_INCLUDE)
+cudnn_hook.o: cudnn_hook.cpp cudnn_hook.hpp hook.hpp logging.hpp
+	$(NVCC) -m64 -Xcompiler "$(CXXFLAGS)" $(GENCODE_FLAGS) -o $@ -c $< $(ALL_INCLUDE)
 
-cudnn_hook.o: cudnn_hook.cpp cudnn_hook.h hook.h debug.h
-	$(NVCC) -m64 -Xcompiler "$(CXXFLAGS)" $(GENCODE_FLAGS) -o $@ -c $< $(NVCC_INCLUDE)
+hook.o: hook.cpp hook.hpp logging.hpp
+	$(NVCC) -m64 -Xcompiler "$(CXXFLAGS)" $(GENCODE_FLAGS) -o $@ -c $< $(ALL_INCLUDE)
 
 .PHONY: clean
 clean:

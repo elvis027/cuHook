@@ -1,7 +1,8 @@
-#ifndef _CUDNN_HOOK_H_
-#define _CUDNN_HOOK_H_
+#ifndef _CUDNN_HOOK_HPP_
+#define _CUDNN_HOOK_HPP_
 
-enum cudnnHookSymbols {
+enum cudnn_hook_symbols
+{
     CUDNN_CREATE,
     CUDNN_DESTROY,
     CUDNN_QUERY_RUNTIME_ERROR,
@@ -265,53 +266,95 @@ enum cudnnHookSymbols {
     NUM_CUDNN_HOOK_SYMBOLS = 260
 };
 
-struct cudnnHookInfo {
-    int hook_proxy_enable;
-    void *func_prehook[NUM_CUDNN_HOOK_SYMBOLS];
-    void *func_proxy[NUM_CUDNN_HOOK_SYMBOLS];   /* hook_proxy_enable = 1 */
-    void *func_actual[NUM_CUDNN_HOOK_SYMBOLS];  /* hook_proxy_enable = 0 */
-    void *func_posthook[NUM_CUDNN_HOOK_SYMBOLS];
+struct cudnnHookInfo
+{
+    int hook_effect_enable;
+    void *func_prehook[NUM_CUDNN_HOOK_SYMBOLS];   /* hook_effect_enable = 1 */
+    void *func_proxy[NUM_CUDNN_HOOK_SYMBOLS];     /* hook_effect_enable = 1 */
+    void *func_actual[NUM_CUDNN_HOOK_SYMBOLS];    /* hook_effect_enable = 0 */
+    void *func_posthook[NUM_CUDNN_HOOK_SYMBOLS];  /* hook_effect_enable = 1 */
 
-    cudnnHookInfo() {
-        hook_proxy_enable = 0;
-
-#ifdef _CUDNN_HOOK_PROXY_ENABLE
-        hook_proxy_enable = 1;
-#endif /* _CUDNN_HOOK_PROXY_ENABLE */
+    cudnnHookInfo(void)
+    {
+        hook_effect_enable = 0;
+#ifdef _CUDNN_HOOK_EFFECT_ENABLE
+        hook_effect_enable = 1;
+#endif
     }
 };
 
-#define CUDNN_HOOK_GEN(hooksymbol, deprecated, funcname, params, ...)                       \
-    deprecated cudnnStatus_t CUDNNWINAPI funcname params                                    \
-    {                                                                                       \
-        DEBUG("[%s] Enter func\n", __func__);                                               \
-                                                                                            \
-        typedef decltype(&funcname) funcType;                                               \
-        cudnnStatus_t result;                                                               \
-        void *actualFunc;                                                                   \
-                                                                                            \
-        pthread_once(&cudnn_hook_init_done, cudnn_hook_init);                               \
-                                                                                            \
-        /* prehook */                                                                       \
-        if((actualFunc = cudnn_hook_info.func_prehook[hooksymbol]))                         \
-            CUDNN_API_CALL(((funcType)actualFunc)(__VA_ARGS__));                            \
-                                                                                            \
-        /* hook */                                                                          \
-        if(cudnn_hook_info.hook_proxy_enable && cudnn_hook_info.func_proxy[hooksymbol])     \
-            actualFunc = cudnn_hook_info.func_proxy[hooksymbol];                            \
-        else if(!(actualFunc = cudnn_hook_info.func_actual[hooksymbol])) {                  \
-            actualFunc = actualDlsym(libcudnnHandle, SYMBOL_STRING(funcname));              \
-            cudnn_hook_info.func_actual[hooksymbol] = actualFunc;                           \
-        }                                                                                   \
-        result = ((funcType)actualFunc)(__VA_ARGS__);                                       \
-                                                                                            \
-        /* posthook */                                                                      \
-        if((actualFunc = cudnn_hook_info.func_posthook[hooksymbol]))                        \
-            CUDNN_API_CALL(((funcType)actualFunc)(__VA_ARGS__));                            \
-                                                                                            \
-        DEBUG("[%s] Leave func\n", __func__);                                               \
-                                                                                            \
-        return result;                                                                      \
+#define CUDNN_HANDLE_HOOK_GEN(hooksymbol, deprecated, funcname, params, handle, ...)            \
+    deprecated cudnnStatus_t CUDNNWINAPI funcname params                                        \
+    {                                                                                           \
+        hook_log.debug("Enter function: "s + string(__func__));                                 \
+                                                                                                \
+        typedef decltype(&funcname) func_type;                                                  \
+        cudnnStatus_t result;                                                                   \
+        void *actual_func;                                                                      \
+                                                                                                \
+        pthread_once(&cudnn_hook_init_done, cudnn_hook_init);                                   \
+                                                                                                \
+        /* prehook */                                                                           \
+        if(cudnn_hook_info.hook_effect_enable && cudnn_hook_info.func_prehook[hooksymbol]) {    \
+            actual_func = cudnn_hook_info.func_prehook[hooksymbol];                             \
+            ((func_type)actual_func)(handle, __VA_ARGS__);                                      \
+        }                                                                                       \
+                                                                                                \
+        /* hook */                                                                              \
+        if(cudnn_hook_info.hook_effect_enable && cudnn_hook_info.func_proxy[hooksymbol])        \
+            actual_func = cudnn_hook_info.func_proxy[hooksymbol];                               \
+        else if(!(actual_func = cudnn_hook_info.func_actual[hooksymbol])) {                     \
+            actual_func = actual_dlsym(libcudnn_handle, SYMBOL_STRING(funcname));               \
+            cudnn_hook_info.func_actual[hooksymbol] = actual_func;                              \
+        }                                                                                       \
+        result = ((func_type)actual_func)(handle, __VA_ARGS__);                                 \
+                                                                                                \
+        /* posthook */                                                                          \
+        if(cudnn_hook_info.hook_effect_enable && cudnn_hook_info.func_posthook[hooksymbol]) {   \
+            actual_func = cudnn_hook_info.func_posthook[hooksymbol];                            \
+            ((func_type)actual_func)(handle, __VA_ARGS__);                                      \
+        }                                                                                       \
+                                                                                                \
+        hook_log.debug("Leave function: "s + string(__func__));                                 \
+                                                                                                \
+        return result;                                                                          \
     }
 
-#endif /* _CUDNN_HOOK_H_ */
+#define CUDNN_HOOK_GEN(hooksymbol, deprecated, funcname, params, ...)                           \
+    deprecated cudnnStatus_t CUDNNWINAPI funcname params                                        \
+    {                                                                                           \
+        hook_log.debug("Enter function: "s + string(__func__));                                 \
+                                                                                                \
+        typedef decltype(&funcname) func_type;                                                  \
+        cudnnStatus_t result;                                                                   \
+        void *actual_func;                                                                      \
+                                                                                                \
+        pthread_once(&cudnn_hook_init_done, cudnn_hook_init);                                   \
+                                                                                                \
+        /* prehook */                                                                           \
+        if(cudnn_hook_info.hook_effect_enable && cudnn_hook_info.func_prehook[hooksymbol]) {    \
+            actual_func = cudnn_hook_info.func_prehook[hooksymbol];                             \
+            ((func_type)actual_func)(__VA_ARGS__);                                              \
+        }                                                                                       \
+                                                                                                \
+        /* hook */                                                                              \
+        if(cudnn_hook_info.hook_effect_enable && cudnn_hook_info.func_proxy[hooksymbol])        \
+            actual_func = cudnn_hook_info.func_proxy[hooksymbol];                               \
+        else if(!(actual_func = cudnn_hook_info.func_actual[hooksymbol])) {                     \
+            actual_func = actual_dlsym(libcudnn_handle, SYMBOL_STRING(funcname));               \
+            cudnn_hook_info.func_actual[hooksymbol] = actual_func;                              \
+        }                                                                                       \
+        result = ((func_type)actual_func)(__VA_ARGS__);                                         \
+                                                                                                \
+        /* posthook */                                                                          \
+        if(cudnn_hook_info.hook_effect_enable && cudnn_hook_info.func_posthook[hooksymbol]) {   \
+            actual_func = cudnn_hook_info.func_posthook[hooksymbol];                            \
+            ((func_type)actual_func)(__VA_ARGS__);                                              \
+        }                                                                                       \
+                                                                                                \
+        hook_log.debug("Leave function: "s + string(__func__));                                 \
+                                                                                                \
+        return result;                                                                          \
+    }
+
+#endif /* _CUDNN_HOOK_HPP_ */

@@ -119,64 +119,63 @@ void codegen_cuda_hook()
         if(symbol_table[idx].type != T_CUDA_FUNC)
             continue;
 
-        if(idx == 0) printf("    ");
-        else printf(" else ");
+        printf("    ");
+        if(idx != 0) printf("else ");
         printf("if(strcmp(symbol, SYMBOL_STRING(%s)) == 0) {\n", symbol_table[idx].name);
-        printf("        return (void *)%s;\n", symbol_table[idx].name);
-        printf("    }");
+        printf("        return reinterpret_cast<void *>(%s);\n", symbol_table[idx].name);
+        printf("    }\n");
     }
-    printf("\n}\n\n");
+    printf("}\n\n");
 
-    printf("// cuda_hook.h\n");
-    printf("enum cudaHookSymbols {\n");
+    printf("// cuda_hook.hpp\n");
+    printf("enum cuda_hook_symbols\n{\n");
+    int symbols_count = 0;
     for(int idx = 0; idx < curr_idx; idx++) {
         if(symbol_table[idx].type != T_CUDA_FUNC)
             continue;
         printf("    ");
         print_symbol_enum(symbol_table[idx].name);
         printf(",\n");
+        ++symbols_count;
     }
-    printf("    NUM_CUDA_HOOK_SYMBOLS\n};\n\n");
+    printf("    NUM_CUDA_HOOK_SYMBOLS = %d\n};\n\n", symbols_count);
 
     printf("// cuda_hook.cpp\n");
     printf("/* ****************************** replace posthook of cuGetProcAddress() ****************************** */\n");
     printf("/* cuGetProcAddress() is the entry of cuda api functions for cuda version >= 11.3 */\n");
     printf("CUresult cuGetProcAddress_posthook(\n");
-    printf("    const char *symbol,\n");
-    printf("    void **pfn,\n");
-    printf("    int cudaVersion,\n");
-    printf("    cuuint64_t flags\n");
-    printf(") {\n");
-    printf("    DEBUG(\"[%%s] Enter func\\n\", __func__);\n");
-    printf("    DEBUG(\"[%%s] symbol %%s, cudaVersion %%d, flags %%lu\\n\", __func__, symbol, cudaVersion, flags);\n");
+    printf("    const char *symbol, void **pfn, int cudaVersion, cuuint64_t flags)\n");
+    printf("{\n");
+    printf("    hook_log.debug(\"cuGetProcAddress: symbol \"s + string(symbol) + \", cudaVersion \"s + std::to_string(cudaVersion));\n\n");
     printf("    /* Hook functions for cuda version >= 11.3 */\n");
     for(int idx = 0; idx < curr_idx; idx++) {
         if(symbol_table[idx].type != T_CUDA_FUNC)
             continue;
 
-        if(idx == 0) printf("    ");
-        else printf("    else ");
+        printf("    ");
+        if(idx != 0) printf("else ");
         printf("if(strcmp(symbol, \"%s\") == 0) {\n", symbol_table[idx].name);
 
         printf("        cuda_hook_info.func_actual[");
         print_symbol_enum(symbol_table[idx].name);
         printf("] = *pfn;\n");
 
-        printf("        *pfn = (void *)%s;\n", symbol_table[idx].name);
+        printf("        *pfn = reinterpret_cast<void *>(%s);\n", symbol_table[idx].name);
         printf("    }\n");
     }
-    printf("    DEBUG(\"[%%s] Leave func\\n\", __func__);\n");
+    printf("    trace_dump.dump(\"cuGetProcAddress\");\n");
     printf("    return CUDA_SUCCESS;\n");
     printf("}\n");
     printf("/* ****************************** replace posthook of cuGetProcAddress() ****************************** */\n\n");
-    printf("/* prehook, proxy, posthook functions start */");
+
+    printf("/* prehook, proxy, posthook functions start */\n");
     for(int idx = 0; idx < curr_idx; idx++) {
         if(symbol_table[idx].type != T_CUDA_FUNC)
             continue;
 
-        printf("\nCUresult %s_prehook(\n", symbol_table[idx].name);
+        printf("CUresult %s_prehook(\n", symbol_table[idx].name);
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
-            printf("    ");
+            if((i - 1) % 4 == 0) printf("    ");
             if(symbol_table[idx + i].type == T_OTHERS_PTR ||
                symbol_table[idx + i].type == T_VOID_PTR)
                 printf("%s%s", symbol_table[idx + i].type_str,
@@ -187,17 +186,16 @@ void codegen_cuda_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n");
+                if(i % 4) printf(", ");
+                else printf(",\n");
         }
-        printf("\n) {\n");
-        printf("    DEBUG(\"[%%s] Enter func\\n\", __func__);\n");
-        printf("    DEBUG(\"[%%s] Leave func\\n\", __func__);\n");
+        printf(")\n{\n");
         printf("    return CUDA_SUCCESS;\n");
-        printf("}\n");
+        printf("}\n\n");
 
-        printf("\nCUresult %s_proxy(\n", symbol_table[idx].name);
+        printf("CUresult %s_proxy(\n", symbol_table[idx].name);
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
-            printf("    ");
+            if((i - 1) % 4 == 0) printf("    ");
             if(symbol_table[idx + i].type == T_OTHERS_PTR ||
                symbol_table[idx + i].type == T_VOID_PTR)
                 printf("%s%s", symbol_table[idx + i].type_str,
@@ -208,17 +206,38 @@ void codegen_cuda_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n");
+                if(i % 4) printf(", ");
+                else printf(",\n");
         }
-        printf("\n) {\n");
-        printf("    DEBUG(\"[%%s] Enter func\\n\", __func__);\n");
-        printf("    DEBUG(\"[%%s] Leave func\\n\", __func__);\n");
-        printf("    return CUDA_SUCCESS;\n");
-        printf("}\n");
+        printf(")\n{\n");
+        printf("    typedef decltype(&%s) func_type;\n", symbol_table[idx].name);
+        printf("    void *actual_func;\n");
 
-        printf("\nCUresult %s_posthook(\n", symbol_table[idx].name);
+        printf("    if(!(actual_func = cuda_hook_info.func_actual[");
+        print_symbol_enum(symbol_table[idx].name);
+        printf("])) {\n");
+
+        printf("        actual_func = actual_dlsym(libcuda_handle, SYMBOL_STRING(%s));\n",
+            symbol_table[idx].name);
+
+        printf("        cuda_hook_info.func_actual[");
+        print_symbol_enum(symbol_table[idx].name);
+        printf("] = actual_func;\n");
+        printf("    }\n");
+
+        printf("    return ((func_type)actual_func)(");
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
-            printf("    ");
+            printf("%s", symbol_table[idx + i].name);
+            if(i != symbol_table[idx].num_args)
+                if(i % 4) printf(", ");
+                else printf(",\n        ");
+        }
+        printf(");\n");
+        printf("}\n\n");
+
+        printf("CUresult %s_posthook(\n", symbol_table[idx].name);
+        for(int i = 1; i <= symbol_table[idx].num_args; i++) {
+            if((i - 1) % 4 == 0) printf("    ");
             if(symbol_table[idx + i].type == T_OTHERS_PTR ||
                symbol_table[idx + i].type == T_VOID_PTR)
                 printf("%s%s", symbol_table[idx + i].type_str,
@@ -229,14 +248,13 @@ void codegen_cuda_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n");
+                if(i % 4) printf(", ");
+                else printf(",\n");
         }
-        printf("\n) {\n");
-        printf("    DEBUG(\"[%%s] Enter func\\n\", __func__);\n");
-        printf("    DUMP_TRACE(\"%s\\n\");\n", symbol_table[idx].name);
-        printf("    DEBUG(\"[%%s] Leave func\\n\", __func__);\n");
+        printf(")\n{\n");
+        printf("    trace_dump.dump(\"%s\");\n", symbol_table[idx].name);
         printf("    return CUDA_SUCCESS;\n");
-        printf("}\n");
+        printf("}\n\n");
     }
     printf("/* prehook, proxy, posthook functions end */\n\n");
 
@@ -248,26 +266,26 @@ void codegen_cuda_hook()
         printf("    cuda_hook_info.func_prehook[");
         print_symbol_enum(symbol_table[idx].name);
         printf("] =\n");
-        printf("        (void *)%s_prehook;\n", symbol_table[idx].name);
+        printf("        reinterpret_cast<void *>(%s_prehook);\n", symbol_table[idx].name);
 
         printf("    cuda_hook_info.func_proxy[");
         print_symbol_enum(symbol_table[idx].name);
         printf("] =\n");
-        printf("        (void *)%s_proxy;\n", symbol_table[idx].name);
+        printf("        reinterpret_cast<void *>(%s_proxy);\n", symbol_table[idx].name);
 
         printf("    cuda_hook_info.func_posthook[");
         print_symbol_enum(symbol_table[idx].name);
         printf("] =\n");
-        printf("        (void *)%s_posthook;\n", symbol_table[idx].name);
+        printf("        reinterpret_cast<void *>(%s_posthook);\n", symbol_table[idx].name);
     }
     printf("}\n\n");
 
-    printf("/* hook function start */");
+    printf("/* hook function start */\n");
     for(int idx = 0; idx < curr_idx; idx++) {
         if(symbol_table[idx].type != T_CUDA_FUNC)
             continue;
 
-        printf("\nCUDA_HOOK_GEN(\n");
+        printf("CUDA_HOOK_GEN(\n");
 
         printf("    ");
         print_symbol_enum(symbol_table[idx].name);
@@ -292,39 +310,40 @@ void codegen_cuda_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n    ");
+                if(i & 1) printf(", ");
+                else printf(",\n    ");
         }
         printf("),\n");
 
-        printf("    ");
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
+            if((i - 1) % 4 == 0) printf("    ");
             printf("%s", symbol_table[idx + i].name);
             if(i != symbol_table[idx].num_args)
-                if(i % 4 == 0)
-                    printf(",\n    ");
-                else
-                    printf(", ");
+                if(i % 4) printf(", ");
+                else printf(",\n");
         }
-        printf(")\n");
+        printf(")\n\n");
     }
     printf("/* hook function end */\n");
 }
 
 void codegen_cudnn_hook()
 {
-    printf("// cudnn_hook.h\n");
-    printf("enum cudnnHookSymbols {\n");
+    printf("// cudnn_hook.hpp\n");
+    printf("enum cudnn_hook_symbols\n{\n");
+    int symbols_count = 0;
     for(int idx = 0; idx < curr_idx; idx++) {
         if(symbol_table[idx].type != T_CUDNN_FUNC)
             continue;
         printf("    ");
         print_symbol_enum(symbol_table[idx].name);
         printf(",\n");
+        ++symbols_count;
     }
-    printf("    NUM_CUDNN_HOOK_SYMBOLS\n};\n\n");
+    printf("    NUM_CUDNN_HOOK_SYMBOLS = %d\n};\n\n", symbols_count);
 
     printf("// cudnn_hook.cpp\n");
-    printf("/* prehook, proxy, posthook functions start */");
+    printf("/* prehook, proxy, posthook functions start */\n");
     for(int idx = 0; idx < curr_idx; idx++) {
         if(symbol_table[idx].type != T_CUDNN_FUNC)
             continue;
@@ -332,9 +351,9 @@ void codegen_cudnn_hook()
            symbol_table[idx + 1].type != T_HANDLE_T_PTR)
             continue;
 
-        printf("\ncudnnStatus_t %s_prehook(\n", symbol_table[idx].name);
+        printf("cudnnStatus_t %s_prehook(\n", symbol_table[idx].name);
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
-            printf("    ");
+            if(i & 1) printf("    ");
             if(symbol_table[idx + i].type == T_OTHERS_PTR ||
                symbol_table[idx + i].type == T_VOID_PTR ||
                symbol_table[idx + i].type == T_HANDLE_T_PTR)
@@ -346,18 +365,16 @@ void codegen_cudnn_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n");
+                if(i & 1) printf(", ");
+                else printf(",\n");
         }
-        printf("\n) {\n");
-        printf("    DEBUG(\"[%%s] Enter func\\n\", __func__);\n");
-        printf("    DUMP_TRACE(\"%s\\n\");\n", symbol_table[idx].name);
-        printf("    DEBUG(\"[%%s] Leave func\\n\", __func__);\n");
+        printf(")\n{\n");
         printf("    return CUDNN_STATUS_SUCCESS;\n");
-        printf("}\n");
+        printf("}\n\n");
 
-        printf("\ncudnnStatus_t %s_proxy(\n", symbol_table[idx].name);
+        printf("cudnnStatus_t %s_proxy(\n", symbol_table[idx].name);
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
-            printf("    ");
+            if(i & 1) printf("    ");
             if(symbol_table[idx + i].type == T_OTHERS_PTR ||
                symbol_table[idx + i].type == T_VOID_PTR ||
                symbol_table[idx + i].type == T_HANDLE_T_PTR)
@@ -369,17 +386,39 @@ void codegen_cudnn_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n");
+                if(i & 1) printf(", ");
+                else printf(",\n");
         }
-        printf("\n) {\n");
-        printf("    DEBUG(\"[%%s] Enter func\\n\", __func__);\n");
-        printf("    DEBUG(\"[%%s] Leave func\\n\", __func__);\n");
-        printf("    return CUDNN_STATUS_SUCCESS;\n");
-        printf("}\n");
+        printf(")\n{\n");
+        printf("    typedef decltype(&%s) func_type;\n", symbol_table[idx].name);
+        printf("    void *actual_func;\n");
 
-        printf("\ncudnnStatus_t %s_posthook(\n", symbol_table[idx].name);
+        printf("    if(!(actual_func = cudnn_hook_info.func_actual[");
+        print_symbol_enum(symbol_table[idx].name);
+        printf("])) {\n");
+
+        printf("        actual_func = actual_dlsym(libcudnn_handle, SYMBOL_STRING(%s));\n",
+            symbol_table[idx].name);
+
+        printf("        cudnn_hook_info.func_actual[");
+        print_symbol_enum(symbol_table[idx].name);
+        printf("] = actual_func;\n");
+        printf("    }\n");
+
+        printf("    return ((func_type)actual_func)(\n");
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
-            printf("    ");
+            if((i - 1) % 4 == 0) printf("        ");
+            printf("%s", symbol_table[idx + i].name);
+            if(i != symbol_table[idx].num_args)
+                if(i % 4) printf(", ");
+                else printf(",\n");
+        }
+        printf(");\n");
+        printf("}\n\n");
+
+        printf("cudnnStatus_t %s_posthook(\n", symbol_table[idx].name);
+        for(int i = 1; i <= symbol_table[idx].num_args; i++) {
+            if(i & 1) printf("    ");
             if(symbol_table[idx + i].type == T_OTHERS_PTR ||
                symbol_table[idx + i].type == T_VOID_PTR ||
                symbol_table[idx + i].type == T_HANDLE_T_PTR)
@@ -391,14 +430,13 @@ void codegen_cudnn_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n");
+                if(i & 1) printf(", ");
+                else printf(",\n");
         }
-        printf("\n) {\n");
-        printf("    DEBUG(\"[%%s] Enter func\\n\", __func__);\n");
-        // printf("    DUMP_TRACE(\"%s_pos\\n\");\n", symbol_table[idx].name);
-        printf("    DEBUG(\"[%%s] Leave func\\n\", __func__);\n");
+        printf(")\n{\n");
+        printf("    trace_dump.dump(\"%s\");\n", symbol_table[idx].name);
         printf("    return CUDNN_STATUS_SUCCESS;\n");
-        printf("}\n");
+        printf("}\n\n");
     }
 
     for(int idx = 0; idx < curr_idx; idx++) {
@@ -408,9 +446,9 @@ void codegen_cudnn_hook()
            symbol_table[idx + 1].type == T_HANDLE_T_PTR)
             continue;
 
-        printf("\ncudnnStatus_t %s_prehook(\n", symbol_table[idx].name);
+        printf("cudnnStatus_t %s_prehook(\n", symbol_table[idx].name);
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
-            printf("    ");
+            if(i & 1) printf("    ");
             if(symbol_table[idx + i].type == T_OTHERS_PTR ||
                symbol_table[idx + i].type == T_VOID_PTR ||
                symbol_table[idx + i].type == T_HANDLE_T_PTR)
@@ -422,18 +460,16 @@ void codegen_cudnn_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n");
+                if(i & 1) printf(", ");
+                else printf(",\n");
         }
-        printf("\n) {\n");
-        printf("    DEBUG(\"[%%s] Enter func\\n\", __func__);\n");
-        // printf("    DUMP_TRACE(\"%s_pre\\n\");\n", symbol_table[idx].name);
-        printf("    DEBUG(\"[%%s] Leave func\\n\", __func__);\n");
+        printf(")\n{\n");
         printf("    return CUDNN_STATUS_SUCCESS;\n");
-        printf("}\n");
+        printf("}\n\n");
 
-        printf("\ncudnnStatus_t %s_proxy(\n", symbol_table[idx].name);
+        printf("cudnnStatus_t %s_proxy(\n", symbol_table[idx].name);
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
-            printf("    ");
+            if(i & 1) printf("    ");
             if(symbol_table[idx + i].type == T_OTHERS_PTR ||
                symbol_table[idx + i].type == T_VOID_PTR ||
                symbol_table[idx + i].type == T_HANDLE_T_PTR)
@@ -445,17 +481,39 @@ void codegen_cudnn_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n");
+                if(i & 1) printf(", ");
+                else printf(",\n");
         }
-        printf("\n) {\n");
-        printf("    DEBUG(\"[%%s] Enter func\\n\", __func__);\n");
-        printf("    DEBUG(\"[%%s] Leave func\\n\", __func__);\n");
-        printf("    return CUDNN_STATUS_SUCCESS;\n");
-        printf("}\n");
+        printf(")\n{\n");
+        printf("    typedef decltype(&%s) func_type;\n", symbol_table[idx].name);
+        printf("    void *actual_func;\n");
 
-        printf("\ncudnnStatus_t %s_posthook(\n", symbol_table[idx].name);
+        printf("    if(!(actual_func = cudnn_hook_info.func_actual[");
+        print_symbol_enum(symbol_table[idx].name);
+        printf("])) {\n");
+
+        printf("        actual_func = actual_dlsym(libcudnn_handle, SYMBOL_STRING(%s));\n",
+            symbol_table[idx].name);
+
+        printf("        cudnn_hook_info.func_actual[");
+        print_symbol_enum(symbol_table[idx].name);
+        printf("] = actual_func;\n");
+        printf("    }\n");
+
+        printf("    return ((func_type)actual_func)(\n");
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
-            printf("    ");
+            if((i - 1) % 4 == 0) printf("        ");
+            printf("%s", symbol_table[idx + i].name);
+            if(i != symbol_table[idx].num_args)
+                if(i % 4) printf(", ");
+                else printf(",\n");
+        }
+        printf(");\n");
+        printf("}\n\n");
+
+        printf("cudnnStatus_t %s_posthook(\n", symbol_table[idx].name);
+        for(int i = 1; i <= symbol_table[idx].num_args; i++) {
+            if(i & 1) printf("    ");
             if(symbol_table[idx + i].type == T_OTHERS_PTR ||
                symbol_table[idx + i].type == T_VOID_PTR ||
                symbol_table[idx + i].type == T_HANDLE_T_PTR)
@@ -467,14 +525,13 @@ void codegen_cudnn_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n");
+                if(i & 1) printf(", ");
+                else printf(",\n");
         }
-        printf("\n) {\n");
-        printf("    DEBUG(\"[%%s] Enter func\\n\", __func__);\n");
-        // printf("    DUMP_TRACE(\"%s_pos\\n\");\n", symbol_table[idx].name);
-        printf("    DEBUG(\"[%%s] Leave func\\n\", __func__);\n");
+        printf(")\n{\n");
+        printf("    trace_dump.dump(\"%s\");\n", symbol_table[idx].name);
         printf("    return CUDNN_STATUS_SUCCESS;\n");
-        printf("}\n");
+        printf("}\n\n");
     }
     printf("/* prehook, proxy, posthook functions end */\n\n");
 
@@ -486,26 +543,30 @@ void codegen_cudnn_hook()
         printf("    cudnn_hook_info.func_prehook[");
         print_symbol_enum(symbol_table[idx].name);
         printf("] =\n");
-        printf("        (void *)%s_prehook;\n", symbol_table[idx].name);
+        printf("        reinterpret_cast<void *>(%s_prehook);\n", symbol_table[idx].name);
 
         printf("    cudnn_hook_info.func_proxy[");
         print_symbol_enum(symbol_table[idx].name);
         printf("] =\n");
-        printf("        (void *)%s_proxy;\n", symbol_table[idx].name);
+        printf("        reinterpret_cast<void *>(%s_proxy);\n", symbol_table[idx].name);
 
         printf("    cudnn_hook_info.func_posthook[");
         print_symbol_enum(symbol_table[idx].name);
         printf("] =\n");
-        printf("        (void *)%s_posthook;\n", symbol_table[idx].name);
+        printf("        reinterpret_cast<void *>(%s_posthook);\n", symbol_table[idx].name);
     }
     printf("}\n\n");
 
-    printf("/* hook function start */");
+    printf("/* hook function start */\n");
+    // CUDNN_HANDLE_HOOK_GEN
     for(int idx = 0; idx < curr_idx; idx++) {
         if(symbol_table[idx].type != T_CUDNN_FUNC)
             continue;
+        if(symbol_table[idx + 1].type != T_HANDLE_T &&
+           symbol_table[idx + 1].type != T_HANDLE_T_PTR)
+            continue;
 
-        printf("\nCUDNN_HOOK_GEN(\n");
+        printf("CUDNN_HANDLE_HOOK_GEN(\n");
 
         printf("    ");
         print_symbol_enum(symbol_table[idx].name);
@@ -531,20 +592,68 @@ void codegen_cudnn_hook()
             if(symbol_table[idx + i].is_array)
                 printf("[]");
             if(i != symbol_table[idx].num_args)
-                printf(",\n    ");
+                if(i & 1) printf(", ");
+                else printf(",\n    ");
         }
         printf("),\n");
 
-        printf("    ");
         for(int i = 1; i <= symbol_table[idx].num_args; i++) {
+            if((i - 1) % 4 == 0) printf("    ");
             printf("%s", symbol_table[idx + i].name);
             if(i != symbol_table[idx].num_args)
-                if(i % 4 == 0)
-                    printf(",\n    ");
-                else
-                    printf(", ");
+                if(i % 4) printf(", ");
+                else printf(",\n");
         }
-        printf(")\n");
+        printf(")\n\n");
+    }
+
+    // CUDNN_HOOK_GEN
+    for(int idx = 0; idx < curr_idx; idx++) {
+        if(symbol_table[idx].type != T_CUDNN_FUNC)
+            continue;
+        if(symbol_table[idx + 1].type == T_HANDLE_T ||
+           symbol_table[idx + 1].type == T_HANDLE_T_PTR)
+            continue;
+
+        printf("CUDNN_HOOK_GEN(\n");
+
+        printf("    ");
+        print_symbol_enum(symbol_table[idx].name);
+        printf(",\n");
+
+        printf("    ");
+        if(symbol_table[idx].deprecated == CUDNN)
+            printf(CUDNN_DEPRECATED_STR);
+        printf(",\n");
+
+        printf("    %s,\n", symbol_table[idx].name);
+
+        printf("    (");
+        for(int i = 1; i <= symbol_table[idx].num_args; i++) {
+            if(symbol_table[idx + i].type == T_OTHERS_PTR ||
+               symbol_table[idx + i].type == T_VOID_PTR ||
+               symbol_table[idx + i].type == T_HANDLE_T_PTR)
+                printf("%s%s", symbol_table[idx + i].type_str,
+                               symbol_table[idx + i].name);
+            else
+                printf("%s %s", symbol_table[idx + i].type_str,
+                                symbol_table[idx + i].name);
+            if(symbol_table[idx + i].is_array)
+                printf("[]");
+            if(i != symbol_table[idx].num_args)
+                if(i & 1) printf(", ");
+                else printf(",\n    ");
+        }
+        printf("),\n");
+
+        for(int i = 1; i <= symbol_table[idx].num_args; i++) {
+            if((i - 1) % 4 == 0) printf("    ");
+            printf("%s", symbol_table[idx + i].name);
+            if(i != symbol_table[idx].num_args)
+                if(i % 4) printf(", ");
+                else printf(",\n");
+        }
+        printf(")\n\n");
     }
     printf("/* hook function end */\n");
 }
