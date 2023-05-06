@@ -274,7 +274,7 @@ struct cudnnHookInfo
     void *func_actual[NUM_CUDNN_HOOK_SYMBOLS];    /* hook_effect_enable = 0 */
     void *func_posthook[NUM_CUDNN_HOOK_SYMBOLS];  /* hook_effect_enable = 1 */
 
-    cudnnHookInfo(void)
+    cudnnHookInfo()
     {
         hook_effect_enable = 0;
 #ifdef _CUDNN_HOOK_EFFECT_ENABLE

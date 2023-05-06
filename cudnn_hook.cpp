@@ -10,6 +10,9 @@
 
 using namespace std::string_literals;
 using std::string;
+using std::to_string;
+
+typedef unsigned long long ull;
 
 static struct cudnnHookInfo cudnn_hook_info;
 static pthread_once_t cudnn_hook_init_done = PTHREAD_ONCE_INIT;

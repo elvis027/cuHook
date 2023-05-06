@@ -21,7 +21,7 @@ logging::log hook_log("hook_log.txt");
 logging::log trace_dump("trace.txt");
 
 __attribute__((constructor))
-void hook_init(void)
+void hook_init()
 {
     libdl_handle = dlopen("libdl.so", RTLD_LAZY);
     libcuda_handle = dlopen("libcuda.so", RTLD_LAZY);
@@ -29,7 +29,7 @@ void hook_init(void)
 }
 
 __attribute__((destructor))
-void hook_fini(void)
+void hook_fini()
 {
 
 }

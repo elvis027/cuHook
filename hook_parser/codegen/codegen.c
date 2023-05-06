@@ -163,7 +163,7 @@ void codegen_cuda_hook()
         printf("        *pfn = reinterpret_cast<void *>(%s);\n", symbol_table[idx].name);
         printf("    }\n");
     }
-    printf("    trace_dump.dump(\"cuGetProcAddress\");\n");
+    printf("    \\\\trace_dump.dump(\"cuGetProcAddress\");\n");
     printf("    return CUDA_SUCCESS;\n");
     printf("}\n");
     printf("/* ****************************** replace posthook of cuGetProcAddress() ****************************** */\n\n");

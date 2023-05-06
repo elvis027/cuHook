@@ -46,7 +46,7 @@ struct cudaHookInfo
     void *func_actual[NUM_CUDA_HOOK_SYMBOLS];    /* hook_effect_enable = 0 */
     void *func_posthook[NUM_CUDA_HOOK_SYMBOLS];  /* hook_effect_enable = 1 */
 
-    cudaHookInfo(void)
+    cudaHookInfo()
     {
         hook_effect_enable = 0;
 #ifdef _CUDA_HOOK_EFFECT_ENABLE

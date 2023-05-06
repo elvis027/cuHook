@@ -10,6 +10,9 @@
 
 using namespace std::string_literals;
 using std::string;
+using std::to_string;
+
+typedef unsigned long long ull;
 
 static struct cudaHookInfo cuda_hook_info;
 static pthread_once_t cuda_hook_init_done = PTHREAD_ONCE_INIT;
@@ -193,7 +196,10 @@ CUresult cuMemAlloc_proxy(
 CUresult cuMemAlloc_posthook(
     CUdeviceptr *dptr, size_t bytesize)
 {
-    trace_dump.dump("cuMemAlloc");
+    trace_dump.dump(
+        "cuMemAlloc "s +
+        to_string(reinterpret_cast<ull>(*dptr)) + " "s +
+        to_string(bytesize));
     return CUDA_SUCCESS;
 }
 
@@ -218,7 +224,10 @@ CUresult cuMemAllocManaged_proxy(
 CUresult cuMemAllocManaged_posthook(
     CUdeviceptr *dptr, size_t bytesize, unsigned int flags)
 {
-    trace_dump.dump("cuMemAllocManaged");
+    trace_dump.dump(
+        "cuMemAlloc "s +
+        to_string(reinterpret_cast<ull>(*dptr)) + " "s +
+        to_string(bytesize));
     return CUDA_SUCCESS;
 }
 
@@ -247,7 +256,10 @@ CUresult cuMemAllocPitch_posthook(
     CUdeviceptr *dptr, size_t *pPitch, size_t WidthInBytes, size_t Height,
     unsigned int ElementSizeBytes)
 {
-    trace_dump.dump("cuMemAllocPitch");
+    trace_dump.dump(
+        "cuMemAlloc "s +
+        to_string(reinterpret_cast<ull>(*dptr)) + " "s +
+        to_string(*pPitch * Height));
     return CUDA_SUCCESS;
 }
 
@@ -272,7 +284,9 @@ CUresult cuMemFree_proxy(
 CUresult cuMemFree_posthook(
     CUdeviceptr dptr)
 {
-    trace_dump.dump("cuMemFree");
+    trace_dump.dump(
+        "cuMemFree "s +
+        to_string(reinterpret_cast<ull>(dptr)));
     return CUDA_SUCCESS;
 }
 
@@ -297,7 +311,11 @@ CUresult cuMemcpy_proxy(
 CUresult cuMemcpy_posthook(
     CUdeviceptr dst, CUdeviceptr src, size_t ByteCount)
 {
-    trace_dump.dump("cuMemcpy");
+    trace_dump.dump(
+        "cuMemcpy "s +
+        to_string(reinterpret_cast<ull>(dst)) + " "s +
+        to_string(reinterpret_cast<ull>(src)) + " "s +
+        to_string(ByteCount));
     return CUDA_SUCCESS;
 }
 
@@ -322,7 +340,11 @@ CUresult cuMemcpyAsync_proxy(
 CUresult cuMemcpyAsync_posthook(
     CUdeviceptr dst, CUdeviceptr src, size_t ByteCount, CUstream hStream)
 {
-    trace_dump.dump("cuMemcpyAsync");
+    trace_dump.dump(
+        "cuMemcpy "s +
+        to_string(reinterpret_cast<ull>(dst)) + " "s +
+        to_string(reinterpret_cast<ull>(src)) + " "s +
+        to_string(ByteCount));
     return CUDA_SUCCESS;
 }
 
@@ -347,7 +369,11 @@ CUresult cuMemcpyDtoD_proxy(
 CUresult cuMemcpyDtoD_posthook(
     CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount)
 {
-    trace_dump.dump("cuMemcpyDtoD");
+    trace_dump.dump(
+        "cuMemcpyDtoD "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(reinterpret_cast<ull>(srcDevice)) + " "s +
+        to_string(ByteCount));
     return CUDA_SUCCESS;
 }
 
@@ -372,7 +398,11 @@ CUresult cuMemcpyDtoDAsync_proxy(
 CUresult cuMemcpyDtoDAsync_posthook(
     CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream)
 {
-    trace_dump.dump("cuMemcpyDtoDAsync");
+    trace_dump.dump(
+        "cuMemcpyDtoD "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(reinterpret_cast<ull>(srcDevice)) + " "s +
+        to_string(ByteCount));
     return CUDA_SUCCESS;
 }
 
@@ -397,7 +427,11 @@ CUresult cuMemcpyDtoH_proxy(
 CUresult cuMemcpyDtoH_posthook(
     void *dstHost, CUdeviceptr srcDevice, size_t ByteCount)
 {
-    trace_dump.dump("cuMemcpyDtoH");
+    trace_dump.dump(
+        "cuMemcpyDtoH "s +
+        to_string(reinterpret_cast<ull>(dstHost)) + " "s +
+        to_string(reinterpret_cast<ull>(srcDevice)) + " "s +
+        to_string(ByteCount));
     return CUDA_SUCCESS;
 }
 
@@ -422,7 +456,11 @@ CUresult cuMemcpyDtoHAsync_proxy(
 CUresult cuMemcpyDtoHAsync_posthook(
     void *dstHost, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream)
 {
-    trace_dump.dump("cuMemcpyDtoHAsync");
+    trace_dump.dump(
+        "cuMemcpyDtoH "s +
+        to_string(reinterpret_cast<ull>(dstHost)) + " "s +
+        to_string(reinterpret_cast<ull>(srcDevice)) + " "s +
+        to_string(ByteCount));
     return CUDA_SUCCESS;
 }
 
@@ -447,7 +485,11 @@ CUresult cuMemcpyHtoD_proxy(
 CUresult cuMemcpyHtoD_posthook(
     CUdeviceptr dstDevice, const void *srcHost, size_t ByteCount)
 {
-    trace_dump.dump("cuMemcpyHtoD");
+    trace_dump.dump(
+        "cuMemcpyHtoD "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(reinterpret_cast<ull>(srcHost)) + " "s +
+        to_string(ByteCount));
     return CUDA_SUCCESS;
 }
 
@@ -472,7 +514,11 @@ CUresult cuMemcpyHtoDAsync_proxy(
 CUresult cuMemcpyHtoDAsync_posthook(
     CUdeviceptr dstDevice, const void *srcHost, size_t ByteCount, CUstream hStream)
 {
-    trace_dump.dump("cuMemcpyHtoDAsync");
+    trace_dump.dump(
+        "cuMemcpyHtoD "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(reinterpret_cast<ull>(srcHost)) + " "s +
+        to_string(ByteCount));
     return CUDA_SUCCESS;
 }
 
@@ -501,7 +547,11 @@ CUresult cuMemcpyPeer_posthook(
     CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext,
     size_t ByteCount)
 {
-    trace_dump.dump("cuMemcpyPeer");
+    trace_dump.dump(
+        "cuMemcpyPeer "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(reinterpret_cast<ull>(srcDevice)) + " "s +
+        to_string(ByteCount));
     return CUDA_SUCCESS;
 }
 
@@ -530,7 +580,11 @@ CUresult cuMemcpyPeerAsync_posthook(
     CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext,
     size_t ByteCount, CUstream hStream)
 {
-    trace_dump.dump("cuMemcpyPeerAsync");
+    trace_dump.dump(
+        "cuMemcpyPeer "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(reinterpret_cast<ull>(srcDevice)) + " "s +
+        to_string(ByteCount));
     return CUDA_SUCCESS;
 }
 
@@ -555,7 +609,11 @@ CUresult cuMemsetD16_proxy(
 CUresult cuMemsetD16_posthook(
     CUdeviceptr dstDevice, unsigned short us, size_t N)
 {
-    trace_dump.dump("cuMemsetD16");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(us) + " "s +
+        to_string(N));
     return CUDA_SUCCESS;
 }
 
@@ -580,7 +638,11 @@ CUresult cuMemsetD16Async_proxy(
 CUresult cuMemsetD16Async_posthook(
     CUdeviceptr dstDevice, unsigned short us, size_t N, CUstream hStream)
 {
-    trace_dump.dump("cuMemsetD16Async");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(us) + " "s +
+        to_string(N));
     return CUDA_SUCCESS;
 }
 
@@ -609,7 +671,11 @@ CUresult cuMemsetD2D16_posthook(
     CUdeviceptr dstDevice, size_t dstPitch, unsigned short us, size_t Width,
     size_t Height)
 {
-    trace_dump.dump("cuMemsetD2D16");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(us) + " "s +
+        to_string(dstPitch * Height));
     return CUDA_SUCCESS;
 }
 
@@ -638,7 +704,11 @@ CUresult cuMemsetD2D16Async_posthook(
     CUdeviceptr dstDevice, size_t dstPitch, unsigned short us, size_t Width,
     size_t Height, CUstream hStream)
 {
-    trace_dump.dump("cuMemsetD2D16Async");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(us) + " "s +
+        to_string(dstPitch * Height));
     return CUDA_SUCCESS;
 }
 
@@ -667,7 +737,11 @@ CUresult cuMemsetD2D32_posthook(
     CUdeviceptr dstDevice, size_t dstPitch, unsigned int ui, size_t Width,
     size_t Height)
 {
-    trace_dump.dump("cuMemsetD2D32");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(ui) + " "s +
+        to_string(dstPitch * Height));
     return CUDA_SUCCESS;
 }
 
@@ -696,7 +770,11 @@ CUresult cuMemsetD2D32Async_posthook(
     CUdeviceptr dstDevice, size_t dstPitch, unsigned int ui, size_t Width,
     size_t Height, CUstream hStream)
 {
-    trace_dump.dump("cuMemsetD2D32Async");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(ui) + " "s +
+        to_string(dstPitch * Height));
     return CUDA_SUCCESS;
 }
 
@@ -725,7 +803,11 @@ CUresult cuMemsetD2D8_posthook(
     CUdeviceptr dstDevice, size_t dstPitch, unsigned char uc, size_t Width,
     size_t Height)
 {
-    trace_dump.dump("cuMemsetD2D8");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(uc) + " "s +
+        to_string(dstPitch * Height));
     return CUDA_SUCCESS;
 }
 
@@ -754,7 +836,11 @@ CUresult cuMemsetD2D8Async_posthook(
     CUdeviceptr dstDevice, size_t dstPitch, unsigned char uc, size_t Width,
     size_t Height, CUstream hStream)
 {
-    trace_dump.dump("cuMemsetD2D8Async");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(uc) + " "s +
+        to_string(dstPitch * Height));
     return CUDA_SUCCESS;
 }
 
@@ -779,7 +865,11 @@ CUresult cuMemsetD32_proxy(
 CUresult cuMemsetD32_posthook(
     CUdeviceptr dstDevice, unsigned int ui, size_t N)
 {
-    trace_dump.dump("cuMemsetD32");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(ui) + " "s +
+        to_string(N));
     return CUDA_SUCCESS;
 }
 
@@ -804,7 +894,11 @@ CUresult cuMemsetD32Async_proxy(
 CUresult cuMemsetD32Async_posthook(
     CUdeviceptr dstDevice, unsigned int ui, size_t N, CUstream hStream)
 {
-    trace_dump.dump("cuMemsetD32Async");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(ui) + " "s +
+        to_string(N));
     return CUDA_SUCCESS;
 }
 
@@ -829,7 +923,11 @@ CUresult cuMemsetD8_proxy(
 CUresult cuMemsetD8_posthook(
     CUdeviceptr dstDevice, unsigned char uc, size_t N)
 {
-    trace_dump.dump("cuMemsetD8");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(uc) + " "s +
+        to_string(N));
     return CUDA_SUCCESS;
 }
 
@@ -854,7 +952,11 @@ CUresult cuMemsetD8Async_proxy(
 CUresult cuMemsetD8Async_posthook(
     CUdeviceptr dstDevice, unsigned char uc, size_t N, CUstream hStream)
 {
-    trace_dump.dump("cuMemsetD8Async");
+    trace_dump.dump(
+        "cuMemset "s +
+        to_string(reinterpret_cast<ull>(dstDevice)) + " "s +
+        to_string(uc) + " "s +
+        to_string(N));
     return CUDA_SUCCESS;
 }
 
@@ -879,7 +981,10 @@ CUresult cuMemAllocAsync_proxy(
 CUresult cuMemAllocAsync_posthook(
     CUdeviceptr *dptr, size_t bytesize, CUstream hStream)
 {
-    trace_dump.dump("cuMemAllocAsync");
+    trace_dump.dump(
+        "cuMemAlloc "s +
+        to_string(reinterpret_cast<ull>(*dptr)) + " "s +
+        to_string(bytesize));
     return CUDA_SUCCESS;
 }
 
@@ -904,7 +1009,9 @@ CUresult cuMemFreeAsync_proxy(
 CUresult cuMemFreeAsync_posthook(
     CUdeviceptr dptr, CUstream hStream)
 {
-    trace_dump.dump("cuMemFreeAsync");
+    trace_dump.dump(
+        "cuMemFree "s +
+        to_string(reinterpret_cast<ull>(dptr)));
     return CUDA_SUCCESS;
 }
 

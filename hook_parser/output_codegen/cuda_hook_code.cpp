@@ -275,7 +275,7 @@ CUresult cuGetProcAddress_posthook(
         cuda_hook_info.func_actual[CU_LAUNCH_KERNEL] = *pfn;
         *pfn = reinterpret_cast<void *>(cuLaunchKernel);
     }
-    trace_dump.dump("cuGetProcAddress");
+    \\trace_dump.dump("cuGetProcAddress");
     return CUDA_SUCCESS;
 }
 /* ****************************** replace posthook of cuGetProcAddress() ****************************** */

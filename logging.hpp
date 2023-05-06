@@ -12,7 +12,7 @@ namespace logging
 class log
 {
 public:
-    log(void) {}
+    log() {}
     log(const std::string &log_filename)
     {
         open(log_filename);
