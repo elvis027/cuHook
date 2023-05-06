@@ -1,4 +1,4 @@
-# cuda Hook
+# cuHook
 Hook cuda/cudnn api functions using LD_PRELOAD.
 
 ## Usage
