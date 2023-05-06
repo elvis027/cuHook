@@ -28,12 +28,6 @@ void hook_init()
     libcudnn_handle = dlopen("libcudnn.so", RTLD_LAZY);
 }
 
-__attribute__((destructor))
-void hook_fini()
-{
-
-}
-
 void *actual_dlsym(void *handle, const char *symbol)
 {
     typedef decltype(&dlsym) func_type;

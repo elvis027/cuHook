@@ -183,7 +183,14 @@ cudnnStatus_t cudnnTransformTensor_posthook(
     const void *beta, const cudnnTensorDescriptor_t yDesc,
     void *y)
 {
-    trace_dump.dump("cudnnTransformTensor");
+    size_t xSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnTransformTensor "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -219,7 +226,14 @@ cudnnStatus_t cudnnTransformTensorEx_posthook(
     const void *srcData, const void *beta,
     const cudnnTensorDescriptor_t destDesc, void *destData)
 {
-    trace_dump.dump("cudnnTransformTensorEx");
+    size_t srcSize, destSize;
+    cudnnGetTensorSizeInBytes(srcDesc, &srcSize);
+    cudnnGetTensorSizeInBytes(destDesc, &destSize);
+    trace_dump.dump(
+        "cudnnTransformTensorEx "s +
+        to_string(reinterpret_cast<ull>(srcData)) + " "s + to_string(srcSize) + " "s +
+        to_string(reinterpret_cast<ull>(destData)) + " "s + to_string(destSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -255,7 +269,14 @@ cudnnStatus_t cudnnAddTensor_posthook(
     const void *beta, const cudnnTensorDescriptor_t cDesc,
     void *C)
 {
-    trace_dump.dump("cudnnAddTensor");
+    size_t aSize, cSize;
+    cudnnGetTensorSizeInBytes(aDesc, &aSize);
+    cudnnGetTensorSizeInBytes(cDesc, &cSize);
+    trace_dump.dump(
+        "cudnnAddTensor "s +
+        to_string(reinterpret_cast<ull>(A)) + " "s + to_string(aSize) + " "s +
+        to_string(reinterpret_cast<ull>(C)) + " "s + to_string(cSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -298,7 +319,16 @@ cudnnStatus_t cudnnOpTensor_posthook(
     const void *beta, const cudnnTensorDescriptor_t cDesc,
     void *C)
 {
-    trace_dump.dump("cudnnOpTensor");
+    size_t aSize, bSize, cSize;
+    cudnnGetTensorSizeInBytes(aDesc, &aSize);
+    cudnnGetTensorSizeInBytes(bDesc, &bSize);
+    cudnnGetTensorSizeInBytes(cDesc, &cSize);
+    trace_dump.dump(
+        "cudnnOpTensor "s +
+        to_string(reinterpret_cast<ull>(A)) + " "s + to_string(aSize) + " "s +
+        to_string(reinterpret_cast<ull>(B)) + " "s + to_string(bSize) + " "s +
+        to_string(reinterpret_cast<ull>(C)) + " "s + to_string(cSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -407,7 +437,16 @@ cudnnStatus_t cudnnReduceTensor_posthook(
     const void *A, const void *beta,
     const cudnnTensorDescriptor_t cDesc, void *C)
 {
-    trace_dump.dump("cudnnReduceTensor");
+    size_t aSize, cSize;
+    cudnnGetTensorSizeInBytes(aDesc, &aSize);
+    cudnnGetTensorSizeInBytes(cDesc, &cSize);
+    trace_dump.dump(
+        "cudnnReduceTensor "s +
+        to_string(reinterpret_cast<ull>(indices)) + " "s + to_string(indicesSizeInBytes) + " "s +
+        to_string(reinterpret_cast<ull>(workspace)) + " "s + to_string(workspaceSizeInBytes) + " "s +
+        to_string(reinterpret_cast<ull>(A)) + " "s + to_string(aSize) + " "s +
+        to_string(reinterpret_cast<ull>(C)) + " "s + to_string(cSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -436,7 +475,12 @@ cudnnStatus_t cudnnSetTensor_posthook(
     cudnnHandle_t handle, const cudnnTensorDescriptor_t yDesc,
     void *y, const void *valuePtr)
 {
-    trace_dump.dump("cudnnSetTensor");
+    size_t ySize;
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnSetTensor "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -465,7 +509,12 @@ cudnnStatus_t cudnnScaleTensor_posthook(
     cudnnHandle_t handle, const cudnnTensorDescriptor_t yDesc,
     void *y, const void *alpha)
 {
-    trace_dump.dump("cudnnScaleTensor");
+    size_t ySize;
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnScaleTensor "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -501,7 +550,14 @@ cudnnStatus_t cudnnTransformFilter_posthook(
     const void *srcData, const void *beta,
     const cudnnFilterDescriptor_t destDesc, void *destData)
 {
-    trace_dump.dump("cudnnTransformFilter");
+    size_t srcSize, destSize;
+    cudnnGetFilterSizeInBytes(srcDesc, &srcSize);
+    cudnnGetFilterSizeInBytes(destDesc, &destSize);
+    trace_dump.dump(
+        "cudnnTransformFilter "s +
+        to_string(reinterpret_cast<ull>(srcData)) + " "s + to_string(srcSize) + " "s +
+        to_string(reinterpret_cast<ull>(destData)) + " "s + to_string(destSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -541,7 +597,14 @@ cudnnStatus_t cudnnSoftmaxForward_posthook(
     const void *beta, const cudnnTensorDescriptor_t yDesc,
     void *y)
 {
-    trace_dump.dump("cudnnSoftmaxForward");
+    size_t xSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnSoftmaxForward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -577,7 +640,14 @@ cudnnStatus_t cudnnPoolingForward_posthook(
     const void *x, const void *beta,
     const cudnnTensorDescriptor_t yDesc, void *y)
 {
-    trace_dump.dump("cudnnPoolingForward");
+    size_t xSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnPoolingForward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -613,7 +683,14 @@ cudnnStatus_t cudnnActivationForward_posthook(
     const void *x, const void *beta,
     const cudnnTensorDescriptor_t yDesc, void *y)
 {
-    trace_dump.dump("cudnnActivationForward");
+    size_t xSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnActivationForward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -653,7 +730,14 @@ cudnnStatus_t cudnnLRNCrossChannelForward_posthook(
     const void *beta, const cudnnTensorDescriptor_t yDesc,
     void *y)
 {
-    trace_dump.dump("cudnnLRNCrossChannelForward");
+    size_t xSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnLRNCrossChannelForward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -696,7 +780,17 @@ cudnnStatus_t cudnnDivisiveNormalizationForward_posthook(
     void *temp2, const void *beta,
     const cudnnTensorDescriptor_t yDesc, void *y)
 {
-    trace_dump.dump("cudnnDivisiveNormalizationForward");
+    size_t xSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnDivisiveNormalizationForward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(means)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(temp)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(temp2)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -743,7 +837,19 @@ cudnnStatus_t cudnnBatchNormalizationForwardInference_posthook(
     const void *bnBias, const void *estimatedMean,
     const void *estimatedVariance, double epsilon)
 {
-    trace_dump.dump("cudnnBatchNormalizationForwardInference");
+    size_t xSize, ySize, bnScaleSize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    cudnnGetTensorSizeInBytes(bnScaleBiasMeanVarDesc, &bnScaleSize);
+    trace_dump.dump(
+        "cudnnBatchNormalizationForwardInference "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(bnScale)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(bnBias)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(estimatedMean)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(estimatedVariance)) + " "s + to_string(bnScaleSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -804,7 +910,22 @@ cudnnStatus_t cudnnNormalizationForwardInference_posthook(
     void *y, double epsilon,
     int groupCnt)
 {
-    trace_dump.dump("cudnnNormalizationForwardInference");
+    size_t xSize, normScaleSize, estimatedMeanSize, zSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(normScaleBiasDesc, &normScaleSize);
+    cudnnGetTensorSizeInBytes(normMeanVarDesc, &estimatedMeanSize);
+    cudnnGetTensorSizeInBytes(zDesc, &zSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnNormalizationForwardInference "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(normScale)) + " "s + to_string(normScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(normBias)) + " "s + to_string(normScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(estimatedMean)) + " "s + to_string(estimatedMeanSize) + " "s +
+        to_string(reinterpret_cast<ull>(estimatedVariance)) + " "s + to_string(estimatedMeanSize) + " "s +
+        to_string(reinterpret_cast<ull>(z)) + " "s + to_string(zSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -873,7 +994,14 @@ cudnnStatus_t cudnnSpatialTfSamplerForward_posthook(
     const void *beta, cudnnTensorDescriptor_t yDesc,
     void *y)
 {
-    trace_dump.dump("cudnnSpatialTfSamplerForward");
+    size_t xSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnSpatialTfSamplerForward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -935,7 +1063,15 @@ cudnnStatus_t cudnnDropoutForward_posthook(
     const cudnnTensorDescriptor_t ydesc, void *y,
     void *reserveSpace, size_t reserveSpaceSizeInBytes)
 {
-    trace_dump.dump("cudnnDropoutForward");
+    size_t xSize, ySize;
+    cudnnGetTensorSizeInBytes(xdesc, &xSize);
+    cudnnGetTensorSizeInBytes(ydesc, &ySize);
+    trace_dump.dump(
+        "cudnnDropoutForward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(reserveSpace)) + " "s + to_string(reserveSpaceSizeInBytes)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1065,7 +1201,16 @@ cudnnStatus_t cudnnSoftmaxBackward_posthook(
     const void *beta, const cudnnTensorDescriptor_t dxDesc,
     void *dx)
 {
-    trace_dump.dump("cudnnSoftmaxBackward");
+    size_t ySize, dySize, dxSize;
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetTensorSizeInBytes(dxDesc, &dxSize);
+    trace_dump.dump(
+        "cudnnSoftmaxBackward "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(dx)) + " "s + to_string(dxSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1108,7 +1253,18 @@ cudnnStatus_t cudnnPoolingBackward_posthook(
     const void *x, const void *beta,
     const cudnnTensorDescriptor_t dxDesc, void *dx)
 {
-    trace_dump.dump("cudnnPoolingBackward");
+    size_t ySize, dySize, xSize, dxSize;
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(dxDesc, &dxSize);
+    trace_dump.dump(
+        "cudnnPoolingBackward "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(dx)) + " "s + to_string(dxSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1151,7 +1307,18 @@ cudnnStatus_t cudnnActivationBackward_posthook(
     const void *x, const void *beta,
     const cudnnTensorDescriptor_t dxDesc, void *dx)
 {
-    trace_dump.dump("cudnnActivationBackward");
+    size_t ySize, dySize, xSize, dxSize;
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(dxDesc, &dxSize);
+    trace_dump.dump(
+        "cudnnActivationBackward "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(dx)) + " "s + to_string(dxSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1198,7 +1365,18 @@ cudnnStatus_t cudnnLRNCrossChannelBackward_posthook(
     const void *beta, const cudnnTensorDescriptor_t dxDesc,
     void *dx)
 {
-    trace_dump.dump("cudnnLRNCrossChannelBackward");
+    size_t ySize, dySize, xSize, dxSize;
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(dxDesc, &dxSize);
+    trace_dump.dump(
+        "cudnnLRNCrossChannelBackward "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(dx)) + " "s + to_string(dxSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1245,7 +1423,18 @@ cudnnStatus_t cudnnDivisiveNormalizationBackward_posthook(
     const void *beta, const cudnnTensorDescriptor_t dXdMeansDesc,
     void *dx, void *dMeans)
 {
-    trace_dump.dump("cudnnDivisiveNormalizationBackward");
+    size_t xSize, dxSize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(dXdMeansDesc, &dxSize);
+    trace_dump.dump(
+        "cudnnDivisiveNormalizationBackward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(means)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(temp)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(temp2)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(dx)) + " "s + to_string(dxSize) + " "s +
+        to_string(reinterpret_cast<ull>(dMeans)) + " "s + to_string(dxSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1415,7 +1604,21 @@ cudnnStatus_t cudnnBatchNormalizationForwardTraining_posthook(
     double epsilon, void *resultSaveMean,
     void *resultSaveInvVariance)
 {
-    trace_dump.dump("cudnnBatchNormalizationForwardTraining");
+    size_t xSize, ySize, bnScaleSize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    cudnnGetTensorSizeInBytes(bnScaleBiasMeanVarDesc, &bnScaleSize);
+    trace_dump.dump(
+        "cudnnBatchNormalizationForwardTraining "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(bnScale)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(bnBias)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultRunningMean)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultRunningVariance)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultSaveMean)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultSaveInvVariance)) + " "s + to_string(bnScaleSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1483,7 +1686,25 @@ cudnnStatus_t cudnnBatchNormalizationForwardTrainingEx_posthook(
     size_t workSpaceSizeInBytes, void *reserveSpace,
     size_t reserveSpaceSizeInBytes)
 {
-    trace_dump.dump("cudnnBatchNormalizationForwardTrainingEx");
+    size_t xSize, zSize = 0, ySize, bnScaleSize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    if(zDesc) cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    cudnnGetTensorSizeInBytes(bnScaleBiasMeanVarDesc, &bnScaleSize);
+    trace_dump.dump(
+        "cudnnBatchNormalizationForwardTrainingEx "s +
+        to_string(reinterpret_cast<ull>(xData)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(zData)) + " "s + to_string(zSize) + " "s +
+        to_string(reinterpret_cast<ull>(yData)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(bnScale)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(bnBias)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultRunningMean)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultRunningVariance)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultSaveMean)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultSaveInvVariance)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(workspace)) + " "s + to_string(workSpaceSizeInBytes) + " "s +
+        to_string(reinterpret_cast<ull>(reserveSpace)) + " "s + to_string(reserveSpaceSizeInBytes)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1540,7 +1761,22 @@ cudnnStatus_t cudnnBatchNormalizationBackward_posthook(
     double epsilon, const void *savedMean,
     const void *savedInvVariance)
 {
-    trace_dump.dump("cudnnBatchNormalizationBackward");
+    size_t xSize, dySize, dxSize, bnScaleSize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetTensorSizeInBytes(dxDesc, &dxSize);
+    cudnnGetTensorSizeInBytes(dBnScaleBiasDesc, &bnScaleSize);
+    trace_dump.dump(
+        "cudnnBatchNormalizationBackward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(dx)) + " "s + to_string(dxSize) + " "s +
+        to_string(reinterpret_cast<ull>(bnScale)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(dBnScaleResult)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(dBnBiasResult)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(savedMean)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(savedInvVariance)) + " "s + to_string(bnScaleSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1615,7 +1851,29 @@ cudnnStatus_t cudnnBatchNormalizationBackwardEx_posthook(
     void *workSpace, size_t workSpaceSizeInBytes,
     void *reserveSpace, size_t reserveSpaceSizeInBytes)
 {
-    trace_dump.dump("cudnnBatchNormalizationBackwardEx");
+    size_t xSize, ySize = 0, dySize, dzSize = 0, dxSize, bnScaleSize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    if(yDesc) cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    if(dzDesc) cudnnGetTensorSizeInBytes(dzDesc, &dzSize);
+    cudnnGetTensorSizeInBytes(dxDesc, &dxSize);
+    cudnnGetTensorSizeInBytes(dBnScaleBiasDesc, &bnScaleSize);
+    trace_dump.dump(
+        "cudnnBatchNormalizationBackwardEx "s +
+        to_string(reinterpret_cast<ull>(xData)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(yData)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(dyData)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(dzData)) + " "s + to_string(dzSize) + " "s +
+        to_string(reinterpret_cast<ull>(dxData)) + " "s + to_string(dxSize) + " "s +
+        to_string(reinterpret_cast<ull>(bnScaleData)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(bnBiasData)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(dBnScaleData)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(dBnBiasData)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(savedMean)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(savedInvVariance)) + " "s + to_string(bnScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(workSpace)) + " "s + to_string(workSpaceSizeInBytes) + " "s +
+        to_string(reinterpret_cast<ull>(reserveSpace)) + " "s + to_string(reserveSpaceSizeInBytes)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1812,7 +2070,26 @@ cudnnStatus_t cudnnNormalizationForwardTraining_posthook(
     size_t workSpaceSizeInBytes, void *reserveSpace,
     size_t reserveSpaceSizeInBytes, int groupCnt)
 {
-    trace_dump.dump("cudnnNormalizationForwardTraining");
+    size_t xSize, normScaleSize, normMeanSize, zSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(normScaleBiasDesc, &normScaleSize);
+    cudnnGetTensorSizeInBytes(normMeanVarDesc, &normMeanSize);
+    cudnnGetTensorSizeInBytes(zDesc, &zSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnNormalizationForwardTraining "s +
+        to_string(reinterpret_cast<ull>(xData)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(normScale)) + " "s + to_string(normScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(normBias)) + " "s + to_string(normScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultRunningMean)) + " "s + to_string(normMeanSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultRunningVariance)) + " "s + to_string(normMeanSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultSaveMean)) + " "s + to_string(normMeanSize) + " "s +
+        to_string(reinterpret_cast<ull>(resultSaveInvVariance)) + " "s + to_string(normMeanSize) + " "s +
+        to_string(reinterpret_cast<ull>(zData)) + " "s + to_string(zSize) + " "s +
+        to_string(reinterpret_cast<ull>(yData)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(workspace)) + " "s + to_string(workSpaceSizeInBytes) + " "s +
+        to_string(reinterpret_cast<ull>(reserveSpace)) + " "s + to_string(reserveSpaceSizeInBytes)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1894,7 +2171,30 @@ cudnnStatus_t cudnnNormalizationBackward_posthook(
     void *reserveSpace, size_t reserveSpaceSizeInBytes,
     int groupCnt)
 {
-    trace_dump.dump("cudnnNormalizationBackward");
+    size_t xSize, ySize, dySize, dzSize, dxSize, normScaleSize, normMeanSize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetTensorSizeInBytes(dzDesc, &dzSize);
+    cudnnGetTensorSizeInBytes(dxDesc, &dxSize);
+    cudnnGetTensorSizeInBytes(dNormScaleBiasDesc, &normScaleSize);
+    cudnnGetTensorSizeInBytes(normMeanVarDesc, &normMeanSize);
+    trace_dump.dump(
+        "cudnnNormalizationBackward "s +
+        to_string(reinterpret_cast<ull>(xData)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(yData)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(dyData)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(dzData)) + " "s + to_string(dzSize) + " "s +
+        to_string(reinterpret_cast<ull>(dxData)) + " "s + to_string(dxSize) + " "s +
+        to_string(reinterpret_cast<ull>(normScaleData)) + " "s + to_string(normScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(normBiasData)) + " "s + to_string(normScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(dNormScaleData)) + " "s + to_string(normScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(dNormBiasData)) + " "s + to_string(normScaleSize) + " "s +
+        to_string(reinterpret_cast<ull>(savedMean)) + " "s + to_string(normMeanSize) + " "s +
+        to_string(reinterpret_cast<ull>(savedInvVariance)) + " "s + to_string(normMeanSize) + " "s +
+        to_string(reinterpret_cast<ull>(workSpace)) + " "s + to_string(workSpaceSizeInBytes) + " "s +
+        to_string(reinterpret_cast<ull>(reserveSpace)) + " "s + to_string(reserveSpaceSizeInBytes)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -1970,7 +2270,16 @@ cudnnStatus_t cudnnSpatialTfSamplerBackward_posthook(
     const void *dy, const void *grid,
     const void *betaDgrid, void *dgrid)
 {
-    trace_dump.dump("cudnnSpatialTfSamplerBackward");
+    size_t xSize, dxSize, dySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(dxDesc, &dxSize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    trace_dump.dump(
+        "cudnnSpatialTfSamplerBackward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(dx)) + " "s + to_string(dxSize) + " "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -2006,7 +2315,15 @@ cudnnStatus_t cudnnDropoutBackward_posthook(
     const cudnnTensorDescriptor_t dxdesc, void *dx,
     void *reserveSpace, size_t reserveSpaceSizeInBytes)
 {
-    trace_dump.dump("cudnnDropoutBackward");
+    size_t dySize, dxSize;
+    cudnnGetTensorSizeInBytes(dydesc, &dySize);
+    cudnnGetTensorSizeInBytes(dxdesc, &dxSize);
+    trace_dump.dump(
+        "cudnnDropoutBackward "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(dx)) + " "s + to_string(dxSize) + " "s +
+        to_string(reinterpret_cast<ull>(reserveSpace)) + " "s + to_string(reserveSpaceSizeInBytes)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -4160,7 +4477,17 @@ cudnnStatus_t cudnnFindConvolutionForwardAlgorithmEx_posthook(
     cudnnConvolutionFwdAlgoPerf_t *perfResults, void *workSpace,
     size_t workSpaceSizeInBytes)
 {
-    trace_dump.dump("cudnnFindConvolutionForwardAlgorithmEx");
+    size_t xSize, wSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetFilterSizeInBytes(wDesc, &wSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnFindConvolutionForwardAlgorithmEx "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(w)) + " "s + to_string(wSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize) + " "s +
+        to_string(reinterpret_cast<ull>(workSpace)) + " "s + to_string(workSpaceSizeInBytes)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -4312,7 +4639,17 @@ cudnnStatus_t cudnnConvolutionForward_posthook(
     const void *beta, const cudnnTensorDescriptor_t yDesc,
     void *y)
 {
-    trace_dump.dump("cudnnConvolutionForward");
+    size_t xSize, wSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetFilterSizeInBytes(wDesc, &wSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnConvolutionForward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(w)) + " "s + to_string(wSize) + " "s +
+        to_string(reinterpret_cast<ull>(workSpace)) + " "s + to_string(workSpaceSizeInBytes) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -4366,7 +4703,21 @@ cudnnStatus_t cudnnConvolutionBiasActivationForward_posthook(
     const void *bias, const cudnnActivationDescriptor_t activationDesc,
     const cudnnTensorDescriptor_t yDesc, void *y)
 {
-    trace_dump.dump("cudnnConvolutionBiasActivationForward");
+    size_t xSize, wSize, zSize, biasSize, ySize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetFilterSizeInBytes(wDesc, &wSize);
+    cudnnGetTensorSizeInBytes(zDesc, &zSize);
+    cudnnGetTensorSizeInBytes(biasDesc, &biasSize);
+    cudnnGetTensorSizeInBytes(yDesc, &ySize);
+    trace_dump.dump(
+        "cudnnConvolutionBiasActivationForward "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(w)) + " "s + to_string(wSize) + " "s +
+        to_string(reinterpret_cast<ull>(workSpace)) + " "s + to_string(workSpaceSizeInBytes) + " "s +
+        to_string(reinterpret_cast<ull>(z)) + " "s + to_string(zSize) + " "s +
+        to_string(reinterpret_cast<ull>(bias)) + " "s + to_string(biasSize) + " "s +
+        to_string(reinterpret_cast<ull>(y)) + " "s + to_string(ySize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -4475,7 +4826,17 @@ cudnnStatus_t cudnnFindConvolutionBackwardDataAlgorithmEx_posthook(
     cudnnConvolutionBwdDataAlgoPerf_t *perfResults, void *workSpace,
     size_t workSpaceSizeInBytes)
 {
-    trace_dump.dump("cudnnFindConvolutionBackwardDataAlgorithmEx");
+    size_t wSize, dySize, dxSize;
+    cudnnGetFilterSizeInBytes(wDesc, &wSize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetTensorSizeInBytes(dxDesc, &dxSize);
+    trace_dump.dump(
+        "cudnnFindConvolutionBackwardDataAlgorithmEx "s +
+        to_string(reinterpret_cast<ull>(w)) + " "s + to_string(wSize) + " "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(dx)) + " "s + to_string(dxSize) + " "s +
+        to_string(reinterpret_cast<ull>(workSpace)) + " "s + to_string(workSpaceSizeInBytes)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -4594,7 +4955,17 @@ cudnnStatus_t cudnnConvolutionBackwardData_posthook(
     const void *beta, const cudnnTensorDescriptor_t dxDesc,
     void *dx)
 {
-    trace_dump.dump("cudnnConvolutionBackwardData");
+    size_t wSize, dySize, dxSize;
+    cudnnGetFilterSizeInBytes(wDesc, &wSize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetTensorSizeInBytes(dxDesc, &dxSize);
+    trace_dump.dump(
+        "cudnnConvolutionBackwardData "s +
+        to_string(reinterpret_cast<ull>(w)) + " "s + to_string(wSize) + " "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(workSpace)) + " "s + to_string(workSpaceSizeInBytes) + " "s +
+        to_string(reinterpret_cast<ull>(dx)) + " "s + to_string(dxSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -4744,13 +5115,23 @@ cudnnStatus_t cudnnFindConvolutionBackwardFilterAlgorithmEx_proxy(
 cudnnStatus_t cudnnFindConvolutionBackwardFilterAlgorithmEx_posthook(
     cudnnHandle_t handle, const cudnnTensorDescriptor_t xDesc,
     const void *x, const cudnnTensorDescriptor_t dyDesc,
-    const void *y, const cudnnConvolutionDescriptor_t convDesc,
+    const void *dy, const cudnnConvolutionDescriptor_t convDesc,
     const cudnnFilterDescriptor_t dwDesc, void *dw,
     const int requestedAlgoCount, int *returnedAlgoCount,
     cudnnConvolutionBwdFilterAlgoPerf_t *perfResults, void *workSpace,
     size_t workSpaceSizeInBytes)
 {
-    trace_dump.dump("cudnnFindConvolutionBackwardFilterAlgorithmEx");
+    size_t xSize, dySize, dwSize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetFilterSizeInBytes(dwDesc, &dwSize);
+    trace_dump.dump(
+        "cudnnFindConvolutionBackwardFilterAlgorithmEx "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(dw)) + " "s + to_string(dwSize) + " "s +
+        to_string(reinterpret_cast<ull>(workSpace)) + " "s + to_string(workSpaceSizeInBytes)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -4869,7 +5250,17 @@ cudnnStatus_t cudnnConvolutionBackwardFilter_posthook(
     const void *beta, const cudnnFilterDescriptor_t dwDesc,
     void *dw)
 {
-    trace_dump.dump("cudnnConvolutionBackwardFilter");
+    size_t xSize, dySize, dwSize;
+    cudnnGetTensorSizeInBytes(xDesc, &xSize);
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetFilterSizeInBytes(dwDesc, &dwSize);
+    trace_dump.dump(
+        "cudnnConvolutionBackwardFilter "s +
+        to_string(reinterpret_cast<ull>(x)) + " "s + to_string(xSize) + " "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(workSpace)) + " "s + to_string(workSpaceSizeInBytes) + " "s +
+        to_string(reinterpret_cast<ull>(dw)) + " "s + to_string(dwSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
@@ -4905,7 +5296,14 @@ cudnnStatus_t cudnnConvolutionBackwardBias_posthook(
     const void *beta, const cudnnTensorDescriptor_t dbDesc,
     void *db)
 {
-    trace_dump.dump("cudnnConvolutionBackwardBias");
+    size_t dySize, dbSize;
+    cudnnGetTensorSizeInBytes(dyDesc, &dySize);
+    cudnnGetTensorSizeInBytes(dbDesc, &dbSize);
+    trace_dump.dump(
+        "cudnnConvolutionBackwardBias "s +
+        to_string(reinterpret_cast<ull>(dy)) + " "s + to_string(dySize) + " "s +
+        to_string(reinterpret_cast<ull>(db)) + " "s + to_string(dbSize)
+    );
     return CUDNN_STATUS_SUCCESS;
 }
 
