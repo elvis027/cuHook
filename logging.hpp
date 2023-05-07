@@ -90,6 +90,6 @@ private:
     std::mutex mtx;
 };
 
-}
+} /* namespace logging */
 
 #endif /* _LOGGING_HPP_ */
