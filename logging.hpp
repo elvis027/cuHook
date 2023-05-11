@@ -12,7 +12,7 @@ namespace logging
 class log
 {
 public:
-    log() {}
+    log() = default;
     log(const std::string &log_filename)
     {
         open(log_filename);
@@ -21,10 +21,25 @@ public:
     {
         open(log_filename);
     }
+    log(const log &_log) = delete;
+    log(log &&_log) noexcept
+        : log()
+    {
+        using std::swap;
+        swap(log_file, _log.log_file);
+    }
     ~log()
     {
         log_file.close();
     }
+    log &operator=(const log &_log) = delete;
+    log &operator=(log &&_log) noexcept
+    {
+        using std::swap;
+        swap(log_file, _log.log_file);
+        return *this;
+    }
+
     void open(const std::string &log_filename)
     {
         log_file.open(log_filename);
